@@ -18,12 +18,12 @@ class CodeGenerator:
         self._workflow: "Workflow" = workflow
 
     def generate(self) -> str:
-        self.generate_steps()
+        self._generate_steps()
         script = get_template("script.txt")
         context = {"name": self._workflow.name, "steps": self._steps}
         return script.render(context)
 
-    def generate_steps(self) -> list[str]:
+    def _generate_steps(self) -> list[str]:
         for step in self._workflow.steps:
             self._handle_workflow_step(step)
         return self._steps
