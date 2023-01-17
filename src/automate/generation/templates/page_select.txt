@@ -1,0 +1,1 @@
+page.locator("{{selector}}").{{event}}({{value}},{{selector_options}})

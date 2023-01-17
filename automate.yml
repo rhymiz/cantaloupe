@@ -1,0 +1,19 @@
+name: "go to google"
+steps:
+  - event: go
+    value: "https://www.google.com"
+  - event: click
+    selector: "selector"
+  - event: click
+    selector: "another.selector"
+  - event: type
+    selector: "mytyping.selector"
+    value: "hello"
+  - event: select
+    selector: "mydrop.selector"
+    value:
+      label: "value"
+  - event: focus
+    selector: "input[name=name]"
+  - event: clear
+    selector: "input[name=name]"

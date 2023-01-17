@@ -1,0 +1,1 @@
+page.{{event}}('{{value}}', {{selector_options}})

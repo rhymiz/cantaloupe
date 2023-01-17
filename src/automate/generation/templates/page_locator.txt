@@ -1,0 +1,5 @@
+{%- if value -%}
+page.locator('{{selector}}').{{event}}('{{value}}',{{selector_options}})
+{%- else -%}
+page.locator('{{selector}}').{{event}}({{selector_options}})
+{%- endif %}
