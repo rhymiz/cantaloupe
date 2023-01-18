@@ -7,6 +7,8 @@ EVENT_TO_PLAYWRIGHT: dict[str, str] = {
     "click": "click",
     "hover": "hover",
     "select": "selectOption",
+    "set_variable": "",
+    "use_variable": ""
 }
 
 

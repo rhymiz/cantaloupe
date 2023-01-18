@@ -1,1 +1,1 @@
-page.locator("{{selector}}").{{event}}({{value}},{{selector_options}})
+await page.locator('{{selector.ref}}',{{ selector.options }}).{{event}}({{input}},{{input.options}})

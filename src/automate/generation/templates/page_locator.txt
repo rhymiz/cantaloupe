@@ -1,5 +1,5 @@
-{%- if value -%}
-page.locator('{{selector}}').{{event}}('{{value}}',{{selector_options}})
+{%- if input -%}
+await page.locator('{{selector.ref}}',{{ selector.options }}).{{event}}('{{input}}',{{input.options}})
 {%- else -%}
-page.locator('{{selector}}').{{event}}({{selector_options}})
+await page.locator('{{selector.ref}}',{{ selector.options }}).{{event}}({{input.options}})
 {%- endif %}

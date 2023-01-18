@@ -3,6 +3,6 @@ import { test, expect } = require('@playwright/test');
 
 test('{{name}}', async ({ page }) => {
     {% for step in steps -%}
-    await {{step}};
+    {{step}};
     {% endfor %}
 });

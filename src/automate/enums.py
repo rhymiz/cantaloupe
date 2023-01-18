@@ -10,6 +10,8 @@ class Event(str, enum.Enum):
     CLICK = "click"
     HOVER = "hover"
     SELECT = "select"
+    SET_VARIABLE = "set_variable"
+    USE_VARIABLE = "use_variable"
 
 
 class Browser(str, enum.Enum):

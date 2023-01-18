@@ -8,10 +8,9 @@ from .enums import Browser, Event
 
 
 class Step(BaseModel):
-    value: Union[str, dict[str, Any], list[Any]] = Field(default=None)
     event: Event
-    selector: Union[str, None] = Field(default=None)
-    selector_options: dict = Field(default_factory=dict)
+    input: Union[str, dict[str, Any], list[Any]] = Field(default=None)
+    selector: Union[str, dict[str, Any], None] = Field(default=None)
 
     class Config:
         use_enum_values = True

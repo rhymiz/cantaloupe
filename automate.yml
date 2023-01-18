@@ -1,19 +1,32 @@
 name: "go to google"
 steps:
   - event: go
-    value: "https://www.google.com"
+    input: "https://www.google.com"
   - event: click
-    selector: "selector"
+    selector:
+      ref: "selector"
+      options:
+        timeout: 1
   - event: click
     selector: "another.selector"
   - event: type
     selector: "mytyping.selector"
-    value: "hello"
+    input: "hello"
   - event: select
     selector: "mydrop.selector"
-    value:
-      label: "value"
+    input:
+      label: "input"
   - event: focus
     selector: "input[name=name]"
   - event: clear
     selector: "input[name=name]"
+  - event: set_variable
+    input:
+      name: fluffy
+      expression: page.locator('hello').first()
+  - event: use_variable
+    input:
+      name: fluffy
+      event: click
+      options:
+        timeout: 1

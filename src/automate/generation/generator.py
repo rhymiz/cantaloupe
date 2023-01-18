@@ -1,4 +1,3 @@
-import imp
 import json
 import typing
 
@@ -25,23 +24,27 @@ class CodeGenerator:
 
     def _generate_steps(self) -> list[str]:
         for step in self._workflow.steps:
-            self._handle_workflow_step(step)
+            self._generate_step(step)
         return self._steps
 
-    def _handle_workflow_step(self, step: "Step") -> None:
+    def _generate_step(self, step: "Step") -> None:
         context = {
             "event": translate_to_playwright(step.event),
-            "value": step.value,
-            "selector": step.selector,
-            "selector_options": json.dumps(step.selector_options),
+            "input": step.input
         }
+        if isinstance(step.selector, str):
+            context["selector"] = {"ref": step.selector}
+        else:
+            context["selector"] = step.selector
 
         if step.event == Event.GO:
             template_name = "page_goto.txt"
         elif step.event == Event.SELECT:
             template_name = "page_select.txt"
-            if isinstance(step.value, (dict, list)):
-                context["value"] = json.dumps(step.value)
+        elif step.event == Event.SET_VARIABLE:
+            template_name = "page_set_var.txt"
+        elif step.event == Event.USE_VARIABLE:
+            template_name = "page_use_var.txt"
         else:
             template_name = "page_locator.txt"
 
