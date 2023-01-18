@@ -20,10 +20,13 @@ steps:
   - event: set_variable
     input:
       name: fluffy
-      expression: page.locator('hello').first()
+      expression: page.locator('hello')
   - event: use_variable
     input:
       name: fluffy
       event: click
-      options:
-        timeout: 1
+  - event: code
+    input: |
+      if (page.title === "hello) {
+          console.log("ayo");
+      }

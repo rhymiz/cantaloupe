@@ -1,1 +1,1 @@
-const {{ input.name }} = {{ input.expression }}
+const {{ input.name }} = {{ input.expression }};

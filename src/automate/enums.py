@@ -3,6 +3,7 @@ import enum
 
 class Event(str, enum.Enum):
     GO = "go"
+    CODE = "code"
     TYPE = "type"
     CLEAR = "clear"
     PRESS = "press"

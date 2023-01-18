@@ -1,5 +1,6 @@
 EVENT_TO_PLAYWRIGHT: dict[str, str] = {
     "go": "goto",
+    "code": "",
     "type": "type",
     "clear": "clear",
     "press": "press",

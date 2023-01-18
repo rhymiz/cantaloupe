@@ -39,6 +39,8 @@ class CodeGenerator:
 
         if step.event == Event.GO:
             template_name = "page_goto.txt"
+        elif step.event == Event.CODE:
+            template_name = "page_code.txt"
         elif step.event == Event.SELECT:
             template_name = "page_select.txt"
         elif step.event == Event.SET_VARIABLE:
