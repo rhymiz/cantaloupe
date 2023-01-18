@@ -1,6 +1,6 @@
 import typing
 
-from ..enums import Event
+from ..enums import Action
 from ..generation.template import get_template
 from ..generation.translate import translate_to_playwright
 
@@ -27,24 +27,25 @@ class WorkflowGenerator:
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
-        context = {
-            "event": translate_to_playwright(step.event),
-            "input": step.input
+        context: dict[str, typing.Any] = {
+            "event": translate_to_playwright(step.action),
+            "input": step.input,
         }
-        if isinstance(step.selector, str):
-            context["selector"] = {"ref": step.selector}
-        else:
-            context["selector"] = step.selector
 
-        if step.event == Event.GO:
+        # this allows us to
+        context["selector"] = (
+            step.selector if isinstance(step.selector, dict) else {"ref": step.selector}
+        )
+
+        if step.action == Action.GO:
             template_name = "page_goto.txt"
-        elif step.event == Event.CODE:
+        elif step.action == Action.CODE:
             template_name = "page_code.txt"
-        elif step.event == Event.SELECT:
+        elif step.action == Action.SELECT:
             template_name = "page_select.txt"
-        elif step.event == Event.SET_VARIABLE:
+        elif step.action == Action.SET_VARIABLE:
             template_name = "page_set_var.txt"
-        elif step.event == Event.USE_VARIABLE:
+        elif step.action == Action.USE_VARIABLE:
             template_name = "page_use_var.txt"
         else:
             template_name = "page_locator.txt"

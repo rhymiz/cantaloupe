@@ -4,12 +4,12 @@ from typing import Any, Union
 
 from pydantic import BaseModel, Field
 
-from .enums import Browser, Event
+from .enums import Browser, Action
 
 
 class Step(BaseModel):
-    event: Event
     input: Union[str, dict[str, Any], list[Any]] = Field(default=None)
+    action: Action
     selector: Union[str, dict[str, Any], None] = Field(default=None)
 
     class Config:

@@ -1,12 +1,12 @@
 name: "Google Search"
 author: "Lemuel Boyce"
 steps:
-  - event: go
+  - action: go
     input: "https://www.google.com"
-  - event: click
+  - action: click
     selector: "input[title=\"Search\"]"
-  - event: type
+  - action: type
     selector: "input[title=\"Search\"]"
     input: "rhymiz"
-  - event: click
+  - action: click
     selector: "input[value=\"Google Search\"] >> nth=0"

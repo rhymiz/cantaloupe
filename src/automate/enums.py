@@ -1,7 +1,7 @@
 import enum
 
 
-class Event(str, enum.Enum):
+class Action(str, enum.Enum):
     GO = "go"
     CODE = "code"
     TYPE = "type"
