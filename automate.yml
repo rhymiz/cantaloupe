@@ -3,10 +3,7 @@ steps:
   - event: go
     input: "https://www.google.com"
   - event: click
-    selector:
-      ref: "selector"
-      options:
-        timeout: 1
+    selector: "selector"
   - event: click
     selector: "another.selector"
   - event: type
@@ -15,7 +12,7 @@ steps:
   - event: select
     selector: "mydrop.selector"
     input:
-      label: "input"
+      label: "beep"
   - event: focus
     selector: "input[name=name]"
   - event: clear
