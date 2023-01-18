@@ -8,7 +8,7 @@ if typing.TYPE_CHECKING:
     from ..models import Step, Workflow
 
 
-class CodeGenerator:
+class WorkflowGenerator:
     """playwright code generator"""
 
     def __init__(self, workflow: "Workflow") -> None:
