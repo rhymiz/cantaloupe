@@ -3,9 +3,13 @@ import typing
 from ..enums import Action
 from ..generation.template import get_template
 from ..generation.translate import translate_to_playwright
+from ..hooks import HookManager
 
 if typing.TYPE_CHECKING:
     from ..models import Step, Workflow
+
+
+_hook_mgr = HookManager()
 
 
 class WorkflowGenerator:
@@ -22,8 +26,12 @@ class WorkflowGenerator:
         return script.render(context)
 
     def _generate_steps(self) -> list[str]:
+        _hook_mgr.call_before_workflow_hooks(self._workflow)
         for step in self._workflow.steps:
+            _hook_mgr.call_before_step_hooks(step)
             self._generate_step(step)
+            _hook_mgr.call_after_step_hooks(step)
+        _hook_mgr.call_before_workflow_hooks(self._workflow)
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
@@ -51,4 +59,9 @@ class WorkflowGenerator:
             template_name = "page_locator.txt"
 
         template = get_template(template_name)
-        self._steps.append(template.render(context))
+        step_string = template.render(context)
+
+        # store the generated javascript code for a given step
+        step.template = step_string
+
+        self._steps.append(step_string)

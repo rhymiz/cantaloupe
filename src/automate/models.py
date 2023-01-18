@@ -11,6 +11,7 @@ class Step(BaseModel):
     input: Union[str, dict[str, Any], list[Any]] = Field(default=None)
     action: Action
     selector: Union[str, dict[str, Any], None] = Field(default=None)
+    template: Union[str, None]
 
     class Config:
         use_enum_values = True
