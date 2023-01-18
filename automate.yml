@@ -1,32 +1,12 @@
-name: "go to google"
+name: "Google Search"
+author: "Lemuel Boyce"
 steps:
   - event: go
     input: "https://www.google.com"
   - event: click
-    selector: "selector"
-  - event: click
-    selector: "another.selector"
+    selector: "input[title='Search']"
   - event: type
-    selector: "mytyping.selector"
-    input: "hello"
-  - event: select
-    selector: "mydrop.selector"
-    input:
-      label: "beep"
-  - event: focus
-    selector: "input[name=name]"
-  - event: clear
-    selector: "input[name=name]"
-  - event: set_variable
-    input:
-      name: fluffy
-      expression: page.locator('hello')
-  - event: use_variable
-    input:
-      name: fluffy
-      event: click
-  - event: code
-    input: |
-      if (page.title === "hello) {
-          console.log("ayo");
-      }
+    selector: "input[title='Search']"
+    input: "rhymiz"
+  - event: click
+    selector: "input[value='Google Search']"
