@@ -38,7 +38,7 @@ class HookRegistry(type):
             if hasattr(cls, "Meta"):
                 for hook_name in _hook_names:
                     if hasattr(cls, hook_name):
-                        HookRegistry.hooks[hook_name].append(cls)
+                        HookRegistry.hooks[hook_name].append(cls)  # type:ignore
 
 
 class BaseHook(metaclass=HookRegistry):
@@ -52,19 +52,19 @@ class HookManager:
         self._hooks = HookRegistry.hooks
 
     def call_after_step_hooks(self, step: "Step") -> None:
-        [hook.after_step_hook(step) for hook in self._hooks[_HookStep.AFTER_STEP]]
+        [hook.after_step_hook(step) for hook in self._hooks[_HookStep.AFTER_STEP]]  # type: ignore
 
     def call_before_step_hooks(self, step: "Step") -> None:
-        [hook.before_step_hook(step) for hook in self._hooks[_HookStep.BEFORE_STEP]]
+        [hook.before_step_hook(step) for hook in self._hooks[_HookStep.BEFORE_STEP]]  # type: ignore
 
     def call_after_workflow_hooks(self, workflow: "Workflow") -> None:
         [
-            hook.after_workflow_hook(workflow)
+            hook.after_workflow_hook(workflow)  # type: ignore
             for hook in self._hooks[_HookStep.AFTER_WORKFLOW]
         ]
 
     def call_before_workflow_hooks(self, workflow: "Workflow") -> None:
         [
-            hook.before_workflow_hook(workflow)
+            hook.before_workflow_hook(workflow)  # type: ignore
             for hook in self._hooks[_HookStep.BEFORE_WORKFLOW]
         ]
