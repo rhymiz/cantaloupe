@@ -31,7 +31,7 @@ class WorkflowGenerator:
             _hook_mgr.call_before_step_hooks(step)
             self._generate_step(step)
             _hook_mgr.call_after_step_hooks(step)
-        _hook_mgr.call_before_workflow_hooks(self._workflow)
+        _hook_mgr.call_after_workflow_hooks(self._workflow)
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
