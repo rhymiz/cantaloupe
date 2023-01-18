@@ -14,3 +14,7 @@ steps:
       if (page.title === "what it do baby") {
             alert("aye baybay!")
       }
+  - action: select
+    selector: "select[name=\"country\"]"
+    input:
+      label: US

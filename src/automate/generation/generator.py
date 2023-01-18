@@ -35,10 +35,10 @@ class WorkflowGenerator:
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
-        context: dict[str, typing.Any] = {"event": translate_to_playwright(step.action)}
-        context["input"] = (
-            step.input if isinstance(step.input, dict) else {"value": step.input}
-        )
+        context: dict[str, typing.Any] = {
+            "event": translate_to_playwright(step.action),
+            "input": step.input,
+        }
         context["selector"] = (
             step.selector if isinstance(step.selector, dict) else {"ref": step.selector}
         )
