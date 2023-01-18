@@ -4,9 +4,9 @@ steps:
   - event: go
     input: "https://www.google.com"
   - event: click
-    selector: "input[title='Search']"
+    selector: "input[title=\"Search\"]"
   - event: type
-    selector: "input[title='Search']"
+    selector: "input[title=\"Search\"]"
     input: "rhymiz"
   - event: click
-    selector: "input[value='Google Search']"
+    selector: "input[value=\"Google Search\"] >> nth=0"
