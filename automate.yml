@@ -18,3 +18,8 @@ steps:
     selector: "select[name=\"country\"]"
     input:
       label: US
+  - action: select
+    selector: "select[name=\"country\"]"
+    input: 
+      - label: US
+      - label: CA

@@ -43,6 +43,9 @@ class WorkflowGenerator:
             step.selector if isinstance(step.selector, dict) else {"ref": step.selector}
         )
 
+        print(context)
+        print(step.input)
+
         if step.action == Action.GO:
             template_name = "page_goto.txt"
         elif step.action == Action.CODE:

@@ -8,7 +8,9 @@ from .enums import Browser, Action
 
 
 class Step(BaseModel):
-    input: Union[str, dict[str, Any], list[Any]] = Field(default=None)
+    input: Union[str, list[Union[str, int, dict[str, Any]]], dict[str, Any]] = Field(
+        default=None
+    )
     action: Action
     selector: Union[str, dict[str, Any], None] = Field(default=None)
     template: Union[str, None]
