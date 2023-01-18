@@ -1,5 +1,4 @@
 name: "Google Search"
-author: "Lemuel Boyce"
 steps:
   - action: go
     input: "https://www.google.com"
@@ -10,3 +9,8 @@ steps:
     input: "rhymiz"
   - action: click
     selector: "input[value=\"Google Search\"] >> nth=0"
+  - action: code
+    input: | 
+      if (page.title === "what it do baby") {
+            alert("aye baybay!")
+      }
