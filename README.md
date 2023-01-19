@@ -35,7 +35,7 @@ steps:
 * use_variable
 
 
-## Plugins
+## Hooks
 
 
 # Contributing
