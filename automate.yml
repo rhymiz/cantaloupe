@@ -9,9 +9,13 @@ steps:
     input: "rhymiz"
   - action: click
     selector: "input[value=\"Google Search\"] >> nth=0"
+  - action: set_variable
+    input:
+      name: boo
+      statement: page.locator('input')
   - action: code
     input: | 
-      if (page.title === "what it do baby") {
+      if (boo.count() === 3) {
             alert("aye baybay!")
       }
   - action: select
@@ -20,6 +24,6 @@ steps:
       label: US
   - action: select
     selector: "select[name=\"country\"]"
-    input: 
+    input:
       - label: US
       - label: CA
