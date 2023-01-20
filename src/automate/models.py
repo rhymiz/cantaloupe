@@ -4,7 +4,12 @@ from typing import Any, Union
 
 from pydantic import BaseModel, Field
 
-from .enums import Browser, Action
+from .enums import Action, Browser
+
+
+class WorkflowConfiguration(BaseModel):
+    retries: int = Field(default=0)
+    headless: bool = Field(default=True)
 
 
 class Step(BaseModel):
@@ -23,6 +28,13 @@ class Workflow(BaseModel):
     name: str
     steps: list[Step]
     browser: Browser = Field(default=Browser.CHROMIUM)
+    base_url: str = Field(default=None)
+    configuration: WorkflowConfiguration = Field(
+        default={
+            "retries": 0,
+            "headedless": True,
+        }
+    )
 
     class Config:
         use_enum_values = True

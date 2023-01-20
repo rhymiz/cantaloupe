@@ -1,4 +1,5 @@
 name: "Google Search"
+base_url: https://www.google.com
 steps:
   - action: go
     input: "https://www.google.com"

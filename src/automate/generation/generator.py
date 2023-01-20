@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import typing
+from dataclasses import dataclass
 
 from ..enums import Action
 from ..generation.template import get_template
@@ -12,29 +15,48 @@ if typing.TYPE_CHECKING:
 _hook_mgr = HookManager()
 
 
-class WorkflowGenerator:
+@dataclass(frozen=True)
+class CodeGeneratorResult:
+    test_file: str
+    config_file: str
+
+
+class CodeGenerator:
     """playwright code generator"""
 
     def __init__(self, workflow: "Workflow") -> None:
         self._steps: list[str] = []
+        self._config: str | None = None
         self._workflow: "Workflow" = workflow
 
-    def generate(self) -> str:
+    def generate(self) -> CodeGeneratorResult:
+        _hook_mgr.call_before_workflow_hooks(self._workflow)
         self._generate_steps()
         script = get_template("script.txt")
-        context = {"name": self._workflow.name, "steps": self._steps}
-        return script.render(context)
+        config = get_template("playwright.config.txt")
+        _hook_mgr.call_after_workflow_hooks(self._workflow)
+        return CodeGeneratorResult(
+            test_file=script.render(
+                {
+                    "name": self._workflow.name,
+                    "steps": self._steps,
+                }
+            ),
+            config_file=config.render({"workflow": self._workflow}),
+        )
 
     def _generate_steps(self) -> list[str]:
-        _hook_mgr.call_before_workflow_hooks(self._workflow)
+        """iterates over all steps in the workflow
+        and calls lifecycle hooks.
+        """
         for step in self._workflow.steps:
             _hook_mgr.call_before_step_hooks(step)
             self._generate_step(step)
             _hook_mgr.call_after_step_hooks(step)
-        _hook_mgr.call_after_workflow_hooks(self._workflow)
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
+        """produces the corresponding line of code for every given step"""
         context: dict[str, typing.Any] = {
             "event": translate_to_playwright(step.action),
             "input": step.input,
