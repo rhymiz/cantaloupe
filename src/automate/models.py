@@ -27,7 +27,7 @@ class Step(BaseModel):
 class Workflow(BaseModel):
     name: str
     steps: list[Step]
-    browser: Browser = Field(default=Browser.CHROMIUM)
+    browser: Browser = Field(default=Browser.CHROMIUM.value)
     base_url: str = Field(default=None)
     configuration: WorkflowConfiguration = Field(
         default={
