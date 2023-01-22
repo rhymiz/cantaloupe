@@ -32,7 +32,7 @@ class Workflow(BaseModel):
     configuration: WorkflowConfiguration = Field(
         default={
             "retries": 0,
-            "headedless": True,
+            "headless": True,
         }
     )
 
