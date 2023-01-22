@@ -1,4 +1,5 @@
 name: "Google Search"
+browser: edge
 base_url: https://www.google.com
 steps:
   - action: go
@@ -28,3 +29,8 @@ steps:
     input:
       - label: US
       - label: CA
+  - action: get_by_title
+    input:
+      ref: "GO"
+      options:
+        timeout: 1

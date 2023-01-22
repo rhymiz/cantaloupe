@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import typing
 from dataclasses import dataclass
+from typing import Any
 
 from ..enums import Action
 from ..generation.template import get_template
@@ -13,12 +14,16 @@ if typing.TYPE_CHECKING:
 
 @dataclass(frozen=True)
 class CodeGeneratorResult:
+    """container for generated spec and playwright.config.js file"""
+
     test_file: str
     config_file: str
 
 
 class CodeGenerator:
-    """Playwright code generator"""
+    """This class is responsible for translation YAML into
+    valid scripts.
+    """
 
     def __init__(self, workflow: "Workflow") -> None:
         self._steps: list[str] = []
@@ -48,13 +53,15 @@ class CodeGenerator:
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
-        """produces the corresponding line of code for every given step"""
-        context: dict[str, typing.Any] = {
+        """produces the corresponding line of code for a given step"""
+        context: dict[str, Any] = {
             "event": translate_to_playwright(step.action),
             "input": step.input,
             "selector": (
-                step.selector if isinstance(step.selector, dict) else {"ref": step.selector}
-            )
+                step.selector
+                if isinstance(step.selector, dict)
+                else {"ref": step.selector}
+            ),
         }
 
         if step.action == Action.GO:
@@ -67,6 +74,8 @@ class CodeGenerator:
             template_name = "page_set_var.txt"
         elif step.action == Action.USE_VARIABLE:
             template_name = "page_use_var.txt"
+        elif step.action in Action.builtin_recommentions():
+            template_name = "page_builtins.txt"
         else:
             template_name = "page_locator.txt"
 

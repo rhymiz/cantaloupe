@@ -1,0 +1,1 @@
+page.{{event}}({% if input.ref %}'{{input.ref}}'{% else %}'{{input}}'{%endif%}{% if input.options %}, {{input.options}}{% endif %})

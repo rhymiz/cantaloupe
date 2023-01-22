@@ -2,18 +2,27 @@
 
 
 from collections import defaultdict
+from re import A
+
+from ..enums import Action
 
 EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
     str,
     {
-        "go": "goto",
-        "type": "type",
-        "clear": "clear",
-        "press": "press",
-        "focus": "focus",
-        "click": "click",
-        "hover": "hover",
-        "select": "selectOption",
+        Action.GO: "goto",
+        Action.TYPE: "type",
+        Action.CLEAR: "clear",
+        Action.PRESS: "press",
+        Action.FOCUS: "focus",
+        Action.CLICK: "click",
+        Action.HOVER: "hover",
+        Action.SELECT: "selectOption",
+        Action.GET_BY_TEXT: "getByText",
+        Action.GET_BY_ROLE: "getByRole",
+        Action.GET_BY_TITLE: "getByTitle",
+        Action.GET_BY_LABEL: "getByLabel",
+        Action.GET_BY_ALT_TEXT: "getByAltText",
+        Action.GET_BY_PLACEHOLDER: "getByPlaceholder",
     },
 )
 
