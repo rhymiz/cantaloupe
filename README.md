@@ -40,7 +40,7 @@ TBD
 
 
 ## TODO:
-* persist files to a given directory
+* persist generated files to a given directory
 * inspect selectors used in steps a suggest more stable/unique alternatives
 * add native assertion support
 * add http proxy configuration support
