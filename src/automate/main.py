@@ -7,5 +7,5 @@ from .models import Workflow
 def load_workflow(data: dict[str, Any]) -> Workflow:
     workflow = Workflow(**data)
     c = CodeGenerator(workflow)
-    print(c.generate().config_file)
+    print(c.generate().test_file)
     return workflow

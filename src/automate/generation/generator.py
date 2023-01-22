@@ -6,13 +6,9 @@ from dataclasses import dataclass
 from ..enums import Action
 from ..generation.template import get_template
 from ..generation.translate import translate_to_playwright
-from ..hooks import HookManager
 
 if typing.TYPE_CHECKING:
     from ..models import Step, Workflow
-
-
-_hook_mgr = HookManager()
 
 
 @dataclass(frozen=True)
@@ -22,7 +18,7 @@ class CodeGeneratorResult:
 
 
 class CodeGenerator:
-    """playwright code generator"""
+    """Playwright code generator"""
 
     def __init__(self, workflow: "Workflow") -> None:
         self._steps: list[str] = []
@@ -30,11 +26,9 @@ class CodeGenerator:
         self._workflow: "Workflow" = workflow
 
     def generate(self) -> CodeGeneratorResult:
-        _hook_mgr.call_before_workflow_hooks(self._workflow)
         self._generate_steps()
         script = get_template("script.txt")
         config = get_template("playwright.config.txt")
-        _hook_mgr.call_after_workflow_hooks(self._workflow)
         return CodeGeneratorResult(
             test_file=script.render(
                 {
@@ -50,9 +44,7 @@ class CodeGenerator:
         and calls lifecycle hooks.
         """
         for step in self._workflow.steps:
-            _hook_mgr.call_before_step_hooks(step)
             self._generate_step(step)
-            _hook_mgr.call_after_step_hooks(step)
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
@@ -60,10 +52,10 @@ class CodeGenerator:
         context: dict[str, typing.Any] = {
             "event": translate_to_playwright(step.action),
             "input": step.input,
+            "selector": (
+                step.selector if isinstance(step.selector, dict) else {"ref": step.selector}
+            )
         }
-        context["selector"] = (
-            step.selector if isinstance(step.selector, dict) else {"ref": step.selector}
-        )
 
         if step.action == Action.GO:
             template_name = "page_goto.txt"

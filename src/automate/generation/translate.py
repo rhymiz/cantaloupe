@@ -1,16 +1,21 @@
-EVENT_TO_PLAYWRIGHT: dict[str, str] = {
-    "go": "goto",
-    "code": "",
-    "type": "type",
-    "clear": "clear",
-    "press": "press",
-    "focus": "focus",
-    "click": "click",
-    "hover": "hover",
-    "select": "selectOption",
-    "set_variable": "",
-    "use_variable": ""
-}
+# Utilities to translate between DSL and Playwright
+
+
+from collections import defaultdict
+
+EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
+    str,
+    {
+        "go": "goto",
+        "type": "type",
+        "clear": "clear",
+        "press": "press",
+        "focus": "focus",
+        "click": "click",
+        "hover": "hover",
+        "select": "selectOption",
+    },
+)
 
 
 def translate_to_playwright(event_name: str) -> str:
