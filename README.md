@@ -36,6 +36,22 @@ steps:
 
 
 ## Hooks
+TBD
+
+
+## TODO:
+* persist files to a given directory
+* inspect selectors used in steps a suggest more stable/unique alternatives
+* add native assertion support
+* add http proxy configuration support
+* add test/testsuite status reporter
+  * post testsuite start
+  * post test start
+  * post step start
+  * post step end
+  * post test end
+  * post testsuite end
 
 
 # Contributing
+TBD
