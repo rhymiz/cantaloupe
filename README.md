@@ -17,6 +17,11 @@ steps:
     input: "rhymiz"
   - action: click
     selector: "input[value=\"Google Search\"] >> nth=0"
+  - action: code
+    input: |
+      if (page.title === "Hello") {
+        console.log("on hello page")
+      }
 ```
 
 
