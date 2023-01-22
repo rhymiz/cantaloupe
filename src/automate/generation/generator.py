@@ -74,7 +74,7 @@ class CodeGenerator:
             template_name = "page_set_var.txt"
         elif step.action == Action.USE_VARIABLE:
             template_name = "page_use_var.txt"
-        elif step.action in Action.builtin_recommentions():
+        elif step.action in Action.recommended():
             template_name = "page_builtins.txt"
         else:
             template_name = "page_locator.txt"

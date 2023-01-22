@@ -26,7 +26,7 @@ class Action(str, enum.Enum):
     GET_BY_PLACEHOLDER = "get_by_placeholder"
 
     @staticmethod
-    def builtin_recommentions() -> list["Action"]:
+    def recommended() -> list["Action"]:
         """
         recommended playwright locators.
         https://playwright.dev/docs/locators
