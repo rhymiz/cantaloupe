@@ -78,3 +78,18 @@ workflow/
   assets/
     logo.png
 ```
+
+a manifest.yml file will define the schema and inputs required to fullfill the workflow.
+
+```yaml
+name: "Login"
+author: "Lemuel Boyce"
+description: "Login to a website"
+inputs:
+  - name: "username"
+    type: "string"
+  - name: "password"
+    type: "string"
+
+
+```
