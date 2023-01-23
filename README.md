@@ -67,3 +67,14 @@ To achieve this, we need to create a workflow engine that can be extended safely
 
 Example:
 * a workflow that can be used to login to a website, which can be used in other workflows
+
+
+reusable workflow structure:
+
+```directory
+workflow/
+  manifest.yml
+  workflow.yml
+  assets/
+    logo.png
+```
