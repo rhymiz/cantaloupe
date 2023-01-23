@@ -60,3 +60,10 @@ TBD
 
 # Contributing
 TBD
+
+# Ideas
+Workflows can be published by developers to a marketplace and can be used in other workflows.
+To achieve this, we need to create a workflow engine that can be extended safely, with a clean public API.
+
+Example:
+* a workflow that can be used to login to a website, which can be used in other workflows
