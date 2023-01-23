@@ -9,12 +9,16 @@ class Action(str, enum.Enum):
     GO = "go"
     CODE = "code"
     TYPE = "type"
+    BACK = "back"
     CLEAR = "clear"
     PRESS = "press"
     FOCUS = "focus"
     CLICK = "click"
     HOVER = "hover"
+    RELOAD = "reload"
     SELECT = "select"
+    FORWARD = "forward"
+    SCREENSHOT = "screenshot"
     GET_BY_TEXT = "get_by_text"
     GET_BY_ROLE = "get_by_role"
     GET_BY_TITLE = "get_by_title"
@@ -24,6 +28,17 @@ class Action(str, enum.Enum):
     GET_BY_TEST_ID = "get_by_test_id"
     GET_BY_ALT_TEXT = "get_by_alt_text"
     GET_BY_PLACEHOLDER = "get_by_placeholder"
+
+    @staticmethod
+    def page_level() -> list["Action"]:
+        """actions that can be used on the page object"""
+        return [
+            Action.GO,
+            Action.BACK,
+            Action.RELOAD,
+            Action.FORWARD,
+            Action.SCREENSHOT,
+        ]
 
     @staticmethod
     def recommended() -> list["Action"]:

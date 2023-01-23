@@ -16,6 +16,7 @@ EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
         Action.CLICK: "click",
         Action.HOVER: "hover",
         Action.SELECT: "selectOption",
+        Action.FORWARD: "goForward",
         Action.GET_BY_TEXT: "getByText",
         Action.GET_BY_ROLE: "getByRole",
         Action.GET_BY_TITLE: "getByTitle",

@@ -64,8 +64,8 @@ class CodeGenerator:
             ),
         }
 
-        if step.action == Action.GO:
-            template_name = "page_goto.txt"
+        if step.action in Action.page_level():
+            template_name = "page.txt"
         elif step.action == Action.CODE:
             template_name = "page_code.txt"
         elif step.action == Action.SELECT:

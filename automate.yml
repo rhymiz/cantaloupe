@@ -34,3 +34,4 @@ steps:
       ref: "GO"
       options:
         timeout: 1
+  - action: reload
