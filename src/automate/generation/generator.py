@@ -1,15 +1,23 @@
 from __future__ import annotations
 
+import os
+import pathlib
 import typing
 from dataclasses import dataclass
 from typing import Any
 
+import yaml
+
 from ..enums import Action
 from ..generation.template import get_template
 from ..generation.translate import translate_to_playwright
+from ..models import Workflow
 
 if typing.TYPE_CHECKING:
-    from ..models import Step, Workflow
+    from ..models import Step
+
+# path to the workflows directory
+workflows_dir = pathlib.Path(os.path.dirname(__file__)).parent / "contrib/workflows"
 
 
 @dataclass(frozen=True)
@@ -31,7 +39,7 @@ class CodeGenerator:
         self._workflow: "Workflow" = workflow
 
     def generate(self) -> CodeGeneratorResult:
-        self._generate_steps()
+        self._generate_steps(self._workflow)
         script = get_template("script.txt")
         config = get_template("playwright.config.txt")
         return CodeGeneratorResult(
@@ -44,11 +52,23 @@ class CodeGenerator:
             config_file=config.render({"workflow": self._workflow}),
         )
 
-    def _generate_steps(self) -> list[str]:
+    def _handle_import(self, step: "Step") -> "Workflow":
+        """imports a yaml file and returns a Workflow object"""
+
+        filename = f"{step.use}.yaml"
+        with open(os.path.join(workflows_dir.as_posix(), filename)) as file:
+            imported_workflow = yaml.safe_load(file)
+            return Workflow(**imported_workflow)
+
+    def _generate_steps(self, workflow: "Workflow") -> list[str]:
         """iterates over all steps in the workflow
         and calls lifecycle hooks.
         """
-        for step in self._workflow.steps:
+        for step in workflow.steps:
+            if step.action == Action.IMPORT:
+                imported_worklow = self._handle_import(step)
+                self._generate_steps(imported_worklow)
+                continue  # skip so that we don't also try to generate an import step
             self._generate_step(step)
         return self._steps
 
@@ -63,10 +83,6 @@ class CodeGenerator:
                 else {"ref": step.selector}
             ),
         }
-        # TODO: import actions not yet supported
-        if step.action == Action.IMPORT:
-            # load yaml from file and append to steps
-            return
 
         if step.action in Action.page_level():
             template_name = "page.txt"

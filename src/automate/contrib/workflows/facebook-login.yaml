@@ -1,0 +1,6 @@
+name: "Facebook Login"
+steps:
+  - action: go
+    input: https://www.facebook.com
+  - action: click
+    selector: "blablal"

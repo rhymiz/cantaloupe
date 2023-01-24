@@ -1,0 +1,8 @@
+name: "Google Login"
+steps:
+  - action: go
+    input: https://www.google.com
+  - action: click
+    selector: "blablal"
+  - use: 'facebook-login'
+    action: import

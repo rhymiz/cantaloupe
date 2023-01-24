@@ -13,6 +13,7 @@ class WorkflowConfiguration(BaseModel):
 
 
 class Step(BaseModel):
+    use: Union[str, None] = Field(default=None)
     input: Union[str, list[Union[str, int, dict[str, Any]]], dict[str, Any]] = Field(
         default=None
     )
