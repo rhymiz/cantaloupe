@@ -9,7 +9,7 @@ from typing import Any
 import yaml
 
 from ..enums import Action
-from ..generation.template import get_template
+from ..generation.template import get_template_from_fs
 from ..generation.translate import translate_to_playwright
 from ..models import Workflow
 
@@ -40,8 +40,8 @@ class CodeGenerator:
 
     def generate(self) -> CodeGeneratorResult:
         self._generate_steps(self._workflow)
-        script = get_template("script.txt")
-        config = get_template("playwright.config.txt")
+        script = get_template_from_fs("script.txt")
+        config = get_template_from_fs("playwright.config.txt")
         return CodeGeneratorResult(
             test_file=script.render(
                 {
@@ -64,6 +64,7 @@ class CodeGenerator:
         """iterates over all steps in the workflow
         and calls lifecycle hooks.
         """
+
         for step in workflow.steps:
             if step.action == Action.IMPORT:
                 # the step being imported is a pointer to a workflow
@@ -86,25 +87,6 @@ class CodeGenerator:
             ),
         }
 
-        if step.action in Action.page_level():
-            template_name = "page.txt"
-        elif step.action == Action.CODE:
-            template_name = "page_code.txt"
-        elif step.action == Action.SELECT:
-            template_name = "page_select.txt"
-        elif step.action == Action.SET_VARIABLE:
-            template_name = "page_set_var.txt"
-        elif step.action == Action.USE_VARIABLE:
-            template_name = "page_use_var.txt"
-        elif step.action in Action.recommended():
-            template_name = "page_builtins.txt"
-        else:
-            template_name = "page_locator.txt"
-
-        template = get_template(template_name)
-        step_string = template.render(context)
-
-        # store the generated javascript code for a given step
-        step.template = step_string
-
-        self._steps.append(step_string)
+        string = step.template_object.render(context)
+        step.template = string
+        self._steps.append(string)

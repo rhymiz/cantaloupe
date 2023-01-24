@@ -11,6 +11,11 @@ template_env = Environment(
 )
 
 
-@lru_cache(maxsize=0)
-def get_template(template_name: str) -> Template:
+def get_template_from_fs(template_name: str) -> Template:
+    """load template from filesystem by name"""
     return template_env.get_template(template_name)
+
+
+def get_template_from_string(template: str) -> Template:
+    """directly create a template object"""
+    return Template(template, autoescape=select_autoescape())

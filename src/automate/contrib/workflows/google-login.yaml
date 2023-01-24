@@ -4,5 +4,14 @@ steps:
     input: https://www.google.com
   - action: click
     selector: "blablal"
-  - use: 'facebook-login'
-    action: import
+  - action: code
+    input: |
+      if (/*.store/.match(page.url)) {
+        alert("has");
+      }
+  - action: screenshot
+    input:
+      options:
+        timeout: 1
+    template: |
+      await page.screenshot({{input.options | safe}})

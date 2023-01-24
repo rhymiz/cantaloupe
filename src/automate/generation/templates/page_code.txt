@@ -1,1 +1,1 @@
-{{ input }}
+{% if input %}{{ input }}{% endif %}
