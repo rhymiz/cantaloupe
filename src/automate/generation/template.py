@@ -1,6 +1,5 @@
 import os
 import pathlib
-from functools import lru_cache
 
 from jinja2 import Environment, FileSystemLoader, Template, select_autoescape
 
