@@ -28,16 +28,28 @@ steps:
 ## Actions
 
 * go
-* code (raw code block)
+* code (raw playwright code)
 * type
+* back
+* clear
 * press
 * focus
-* clear
 * click
 * hover
+* reload
 * select
+* import
+* forward
+* screenshot
+* get_by_text
+* get_by_role
+* get_by_title
+* get_by_label
 * set_variable
 * use_variable
+* get_by_test_id
+* get_by_alt_text
+* get_by_placeholder
 
 
 ## Hooks

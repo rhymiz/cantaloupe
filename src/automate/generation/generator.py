@@ -52,7 +52,7 @@ class CodeGenerator:
             config_file=config.render({"workflow": self._workflow}),
         )
 
-    def _handle_import(self, step: "Step") -> "Workflow":
+    def _handle_workflow_import(self, step: "Step") -> "Workflow":
         """imports a yaml file and returns a Workflow object"""
 
         filename = f"{step.use}.yaml"
@@ -66,7 +66,9 @@ class CodeGenerator:
         """
         for step in workflow.steps:
             if step.action == Action.IMPORT:
-                imported_worklow = self._handle_import(step)
+                # the step being imported is a pointer to a workflow
+                # that will be merged into the current workflow.
+                imported_worklow = self._handle_workflow_import(step)
                 self._generate_steps(imported_worklow)
                 continue  # skip so that we don't also try to generate an import step
             self._generate_step(step)
