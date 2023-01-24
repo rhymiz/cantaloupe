@@ -61,6 +61,8 @@ TBD
 * inspect selectors used in steps a suggest more stable/unique alternatives
 * add native assertion support
 * add http proxy configuration support
+* add support for custom templates
+* improve template selection logic
 * add test/testsuite status reporter
   * post testsuite start
   * post test start
@@ -68,7 +70,8 @@ TBD
   * post step end
   * post test end
   * post testsuite end
-
+* import workflows from `automate.contrib.workflows`
+  * merge workflow steps into caller
 
 # Contributing
 TBD
