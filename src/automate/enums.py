@@ -17,6 +17,7 @@ class Action(str, enum.Enum):
     HOVER = "hover"
     RELOAD = "reload"
     SELECT = "select"
+    IMPORT = "import"
     FORWARD = "forward"
     SCREENSHOT = "screenshot"
     GET_BY_TEXT = "get_by_text"

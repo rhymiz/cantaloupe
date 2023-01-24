@@ -33,7 +33,7 @@ def translate_to_playwright(event_name: str) -> str:
 
     arg: event_name str: name passed in from workflow
     """
-    return EVENT_TO_PLAYWRIGHT[event_name]
+    return EVENT_TO_PLAYWRIGHT.get(event_name, event_name)
 
 
 def translate_to_dsl(event_name: str) -> str:

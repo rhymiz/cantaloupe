@@ -1,1 +1,5 @@
-page.{{event}}({% if input.ref %}'{{input.ref}}'{% else %}'{{input}}'{%endif%}{% if input.options %}, {{input.options}}{% endif %})
+{%- if input.ref -%}
+await page.{{event}}('{{input.ref}}'{% if input.options %}, {{input.options}}{% endif %});
+{%- else -%}
+await page.{{event}}('{{input}}'{% if input.options %}, {{input.options}}{% endif %});
+{%- endif -%}

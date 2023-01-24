@@ -2,6 +2,8 @@ name: "Google Search"
 browser: edge
 base_url: https://www.google.com
 steps:
+  - use: 'google-login'
+    action: import
   - action: go
     input: "https://www.google.com"
   - action: click

@@ -63,6 +63,10 @@ class CodeGenerator:
                 else {"ref": step.selector}
             ),
         }
+        # TODO: import actions not yet supported
+        if step.action == Action.IMPORT:
+            # load yaml from file and append to steps
+            return
 
         if step.action in Action.page_level():
             template_name = "page.txt"

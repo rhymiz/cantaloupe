@@ -90,6 +90,4 @@ inputs:
     type: "string"
   - name: "password"
     type: "string"
-
-
 ```
