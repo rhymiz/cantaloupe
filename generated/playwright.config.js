@@ -9,14 +9,14 @@ const config = {
     },
     fullyParallel: true,
     forbidOnly: false,
-    retries: {{ workflow.configuration.retries }},
+    retries: 0,
     workers: 1,
     reporter: [['json', {"outputFile": "report.json"}],["list"]],
     use: {
-        {% if workflow.base_url %}baseURL: '{{ workflow.base_url }}',{% endif %}
+        baseURL: 'https://www.google.com',
         trace: 'on',
         headless: true,
-        browserName: '{{ workflow.browser }}',
+        browserName: 'edge',
         video: 'on',
         ignoreHTTPSErrors: true
     }
