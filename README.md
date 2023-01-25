@@ -2,6 +2,11 @@
 Playwright code generation framework
 
 
+## Resources
+* [Playwright](https://playwright.dev/docs/intro)
+* [DraggableJS](https://github.com/SortableJS/Sortable)
+
+
 ## Example Workflow
 
 ```yaml
