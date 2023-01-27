@@ -1,10 +1,12 @@
 from __future__ import annotations
+
 import pathlib
+
 import click
 import yaml
 
-from .models import Workflow
 from .generation.generator import CodeGenerator
+from .models import Workflow
 
 
 def _create_structure(dst: pathlib.Path) -> pathlib.Path:
@@ -36,7 +38,7 @@ def convert(workflow: click.File, dst: pathlib.Path) -> None:
     with open(path / "playwright.config.js", "w") as file:
         file.write(genedated.config_file)
 
-    with open(path / "tests" / f"test_01.js", "w") as file:
+    with open(path / "tests" / "test_01.js", "w") as file:
         file.write(genedated.test_file)
 
 
