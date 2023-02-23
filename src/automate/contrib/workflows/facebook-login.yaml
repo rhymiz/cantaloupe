@@ -1,6 +1,22 @@
 name: "Facebook Login"
+variables:
+  - name: "email"
+    description: "Email address"
+  - name: "password"
+    description: "Password"
+description: "Logs into Facebook"
 steps:
   - action: go
     input: https://www.facebook.com
   - action: click
-    selector: "blablal"
+    selector: "input[name='email']"
+  - action: type
+    selector: "input[name='email']"
+    input: "{{email}}"
+  - action: click
+    selector: "input[name='pass']"
+  - action: type
+    selector: "input[name='pass']"
+    input: "{{password}}"
+  - action: click
+    selector: "input[value='Log In']"

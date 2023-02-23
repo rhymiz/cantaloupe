@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 import pathlib
 import typing
@@ -9,12 +10,13 @@ from typing import Any
 import yaml
 
 from ..enums import Action
-from ..generation.template import get_template_from_fs
+from ..generation.template import get_template_from_fs, template_env
 from ..generation.translate import translate_to_playwright
 from ..models import Workflow
 
 if typing.TYPE_CHECKING:
     from ..models import Step
+    from jinja2 import Template
 
 # path to the workflows directory
 workflows_dir = pathlib.Path(os.path.dirname(__file__)).parent / "contrib/workflows"
@@ -53,15 +55,20 @@ class CodeGenerator:
         )
 
     def _handle_workflow_import(self, step: "Step") -> "Workflow":
-        """imports a yaml file and returns a Workflow object"""
-
+        """
+        imports a yaml file and returns a Workflow object
+        """
         filename = f"{step.use}.yaml"
         with open(os.path.join(workflows_dir.as_posix(), filename)) as file:
-            imported_workflow = yaml.safe_load(file)
-            return Workflow(**imported_workflow)
+            string = file.read()
+            template: "Template" = template_env.from_string(string)
+            hydrated: str = template.render(step.variables)
+            workflow: dict[str, Any] = yaml.safe_load(hydrated)
+            return Workflow(**workflow)
 
     def _generate_steps(self, workflow: "Workflow") -> list[str]:
-        """iterates over all steps in the workflow
+        """
+        iterates over all steps in the workflow
         and calls lifecycle hooks.
         """
 
@@ -69,24 +76,24 @@ class CodeGenerator:
             if step.action == Action.IMPORT:
                 # the step being imported is a pointer to a workflow
                 # that will be merged into the current workflow.
-                imported_worklow = self._handle_workflow_import(step)
-                self._generate_steps(imported_worklow)
-                continue  # skip so that we don't also try to generate an import step
-            self._generate_step(step)
+                imported_workflow = self._handle_workflow_import(step)
+                self._generate_steps(imported_workflow)
+            else:
+                self._generate_step(step)
         return self._steps
 
     def _generate_step(self, step: "Step") -> None:
-        """produces the corresponding line of code for a given step"""
+        """
+        produces the corresponding line of code for a given step
+        """
+
         context: dict[str, Any] = {
-            "event": translate_to_playwright(step.action),
-            "input": step.input,
-            "selector": (
-                step.selector
-                if isinstance(step.selector, dict)
-                else {"ref": step.selector}
-            ),
+            "input": json.dumps(step.input),
+            "action": translate_to_playwright(step.action),
+            "selector": json.dumps(step.selector),
+            "selector_options": json.dumps(step.selector_options),
+            "input_options": json.dumps(step.input_options),
         }
 
         string = step.template_object.render(context)
-        step.template = string
         self._steps.append(string)

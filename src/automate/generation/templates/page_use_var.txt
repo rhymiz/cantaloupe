@@ -1,1 +1,0 @@
-await {{ input.name }}.{{ input.event }}({{ input.options }});

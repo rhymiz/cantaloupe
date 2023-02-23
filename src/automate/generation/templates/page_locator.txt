@@ -1,1 +1,0 @@
-await page.locator('{{selector.ref}}'{% if selector.options %},{{ selector.options }}{% endif %}).{{event}}({%if input %}'{{input}}'{%endif%}{% if input.options %},{{input.options}}{%endif%});

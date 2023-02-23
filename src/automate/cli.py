@@ -23,23 +23,18 @@ def entry() -> None:
 
 @click.command()
 @click.argument("workflow", required=True, type=click.File())
-@click.option(
-    "--dst",
-    type=pathlib.Path,
-    default="generated",
-    required=False,
-)
+@click.option("--dst", type=pathlib.Path, default="generated", required=False)
 def convert(workflow: click.File, dst: pathlib.Path) -> None:
-    wf = Workflow(**yaml.safe_load(workflow))
+    wf = Workflow(**yaml.safe_load(workflow))  # type: ignore
     generator = CodeGenerator(wf)
-    genedated = generator.generate()
+    generated = generator.generate()
     path = _create_structure(dst)
 
     with open(path / "playwright.config.js", "w") as file:
-        file.write(genedated.config_file)
+        file.write(generated.config_file)
 
     with open(path / "tests" / "test_01.js", "w") as file:
-        file.write(genedated.test_file)
+        file.write(generated.test_file)
 
 
 entry.add_command(convert)

@@ -1,39 +1,12 @@
 name: "Google Search"
-browser: edge
+browser: chromium
 base_url: https://www.google.com
 steps:
-  - use: 'google-login'
+  - use: 'facebook-login'
     action: import
-  - action: go
-    input: "https://www.google.com"
-  - action: click
-    selector: "input[title=\"Search\"]"
+    variables:
+      email: "demo@elmi.com"
+      password: "demo"
   - action: type
-    selector: "input[title=\"Search\"]"
-    input: "rhymiz"
-  - action: click
-    selector: "input[value=\"Google Search\"] >> nth=0"
-  - action: set_variable
-    input:
-      name: boo
-      statement: page.locator('input')
-  - action: code
-    input: | 
-      if (boo.count() === 3) {
-            alert("aye baybay!")
-      }
-  - action: select
-    selector: "select[name=\"country\"]"
-    input:
-      label: US
-  - action: select
-    selector: "select[name=\"country\"]"
-    input:
-      - label: US
-      - label: CA
-  - action: get_by_title
-    input:
-      ref: "GO"
-      options:
-        timeout: 1
-  - action: reload
+    selector: "input[name='q']"
+    input: "https://jsonplaceholder.typicode.com/todos/1"

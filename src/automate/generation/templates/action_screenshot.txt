@@ -1,0 +1,2 @@
+{%- from 'macros/generic_action.txt' import generic_action -%}
+{{ generic_action("screenshot", input_options) }}

@@ -1,5 +1,0 @@
-{%- if input -%}
-await page.{{event}}('{{input}}'{% if input.options %}, {{input.options}}{% endif %});
-{%- else -%}
-await page.{{event}}({% if input.options %}{{input.options}}{% endif %});
-{%- endif -%}

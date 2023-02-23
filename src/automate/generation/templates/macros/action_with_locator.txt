@@ -1,0 +1,7 @@
+{%- macro action_with_selector(action, selector, selector_options, input, input_options) -%}
+{%- if input -%}
+  await page.locator({{ selector }}, {{ selector_options }}).{{ action }}({{ input }}, {{ input_options }});
+{%- else -%}
+  await page.locator({{ selector }}, {{ selector_options }}).{{ action }}({{ input_options }});
+{%- endif -%}
+{%- endmacro -%}
