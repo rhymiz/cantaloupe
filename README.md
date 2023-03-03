@@ -1,10 +1,19 @@
 # Browser Automate
-Playwright code generation framework
+One DSL to rule them all.
+
+
+## What is this?
+Browser Automate is a DSL for automating browser tasks. 
+Currently, it is a wrapper around [Playwright](https://playwright.dev/docs/intro).
+
+The goal is to eventually create a workflow engine that can be extended to support other automation frameworks and languages.
+
+
+:warning: This project is still in early development and is not ready for production use.
 
 
 ## Resources
 * [Playwright](https://playwright.dev/docs/intro)
-* [DraggableJS](https://github.com/SortableJS/Sortable)
 
 
 ## Example Workflow

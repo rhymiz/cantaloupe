@@ -12,11 +12,11 @@ import yaml
 from ..enums import Action
 from ..generation.template import get_template_from_fs, template_env
 from ..generation.translate import translate_to_playwright
-from ..models import Workflow
+from ..models import Step, Workflow
 
 if typing.TYPE_CHECKING:
-    from ..models import Step
     from jinja2 import Template
+
 
 # path to the workflows directory
 workflows_dir = pathlib.Path(os.path.dirname(__file__)).parent / "contrib/workflows"
@@ -31,7 +31,8 @@ class CodeGeneratorResult:
 
 
 class CodeGenerator:
-    """This class is responsible for translation YAML into
+    """
+    This class is responsible for translation YAML into
     valid scripts.
     """
 
@@ -41,6 +42,9 @@ class CodeGenerator:
         self._workflow: "Workflow" = workflow
 
     def generate(self) -> CodeGeneratorResult:
+        """
+        generates the code for a given workflow
+        """
         self._generate_steps(self._workflow)
         script = get_template_from_fs("script.txt")
         config = get_template_from_fs("playwright.config.txt")
@@ -59,7 +63,7 @@ class CodeGenerator:
         imports a yaml file and returns a Workflow object
         """
         filename = f"{step.use}.yaml"
-        with open(os.path.join(workflows_dir.as_posix(), filename)) as file:
+        with open(os.path.join(workflows_dir.as_posix(), filename), encoding="utf-8") as file:
             string = file.read()
             template: "Template" = template_env.from_string(string)
             hydrated: str = template.render(step.variables)
