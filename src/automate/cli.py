@@ -5,7 +5,7 @@ import pathlib
 import click
 import yaml
 
-from .generation.generator import CodeGenerator
+from .code_generation.generator import CodeGenerator
 from .models import Workflow
 
 

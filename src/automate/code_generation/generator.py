@@ -10,8 +10,8 @@ from typing import Any
 import yaml
 
 from ..enums import Action
-from ..generation.template import get_template_from_fs, template_env
-from ..generation.translate import translate_to_playwright
+from ..code_generation.template import get_template_from_fs, template_env
+from ..code_generation.translate import translate_to_playwright
 from ..models import Step, Workflow
 
 if typing.TYPE_CHECKING:

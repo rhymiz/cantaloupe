@@ -6,7 +6,7 @@ from jinja2 import Template
 from pydantic import BaseModel, Field
 
 from .enums import Action, Browser
-from .generation.template import get_template_from_fs, get_template_from_string
+from .code_generation.template import get_template_from_fs, get_template_from_string
 
 
 class Step(BaseModel):
