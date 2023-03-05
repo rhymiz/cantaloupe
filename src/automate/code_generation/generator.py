@@ -46,7 +46,7 @@ class CodeGenerator:
         generates the code for a given workflow
         """
         self._generate_steps(self._workflow)
-        script = get_template_from_fs("script.txt")
+        script = get_template_from_fs("spec.txt")
         config = get_template_from_fs("playwright.config.txt")
         return CodeGeneratorResult(
             test_file=script.render(

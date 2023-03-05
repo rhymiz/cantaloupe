@@ -1,0 +1,12 @@
+name: "Google Search"
+browser: chromium
+base_url: https://www.google.com
+steps:
+  - use: 'facebook-login'
+    action: import
+    variables:
+      email: "demo@elmi.com"
+      password: "demo"
+  - action: type
+    selector: "input[name='q']"
+    input: "https://jsonplaceholder.typicode.com/todos/1"

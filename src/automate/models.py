@@ -5,8 +5,8 @@ from typing import Any, List, Union
 from jinja2 import Template
 from pydantic import BaseModel, Field
 
-from .enums import Action, Browser
 from .code_generation.template import get_template_from_fs, get_template_from_string
+from .enums import Action, Browser
 
 
 class Step(BaseModel):
@@ -55,8 +55,11 @@ class Workflow(BaseModel):
     variables: list[WorkflowVariable] = Field(default=[])
     configuration: WorkflowConfiguration = Field(
         default={
+            "trace": "off",
+            "video": "on",
             "retries": 0,
             "headless": True,
+            "screenshot": "off",
         }
     )
 
@@ -65,5 +68,8 @@ class Workflow(BaseModel):
 
 
 class WorkflowConfiguration(BaseModel):
+    trace: str = Field(default="off")
+    video: str = Field(default="off")
     retries: int = Field(default=0)
     headless: bool = Field(default=True)
+    screenshot: str = Field(default="off")

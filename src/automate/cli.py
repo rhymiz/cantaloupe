@@ -33,7 +33,7 @@ def convert(workflow: click.File, dst: pathlib.Path) -> None:
     with open(path / "playwright.config.js", "w") as file:
         file.write(generated.config_file)
 
-    with open(path / "tests" / "test_01.js", "w") as file:
+    with open(path / "tests" / "test_01.spec.js", "w") as file:
         file.write(generated.test_file)
 
 

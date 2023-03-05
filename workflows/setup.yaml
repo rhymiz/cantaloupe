@@ -1,0 +1,3 @@
+device: Desktop Chrome
+browser: chromium
+base_url: https://www.google.com
