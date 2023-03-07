@@ -1,4 +1,5 @@
 from __future__ import annotations
+from pathlib import Path
 
 from typing import Any, List, Union
 
@@ -6,10 +7,16 @@ from jinja2 import Template
 from pydantic import BaseModel, Field
 
 from .code_generation.template import get_template_from_fs, get_template_from_string
-from .enums import Action, Browser
+from .enums import Action, Browser, ScreenshotOpts, TraceVideoOpts
 
 
 class Step(BaseModel):
+    """
+    A step in a workflow.
+
+    Describes an action to be taken during workflow execution.
+    """
+
     use: Union[str, None] = Field(default=None)
     input: str = Field(default=None)
     input_options: Union[dict[str, Any], List[Any]] = Field(default_factory=dict)
@@ -50,26 +57,34 @@ class WorkflowVariable(BaseModel):
 class Workflow(BaseModel):
     name: str
     steps: list[Step]
-    browser: Browser = Field(default=Browser.CHROMIUM.value)
-    base_url: str = Field(default=None)
+    file_name: str = Field(default=None)
     variables: list[WorkflowVariable] = Field(default=[])
-    configuration: WorkflowConfiguration = Field(
-        default={
-            "trace": "off",
-            "video": "on",
-            "retries": 0,
-            "headless": True,
-            "screenshot": "off",
-        }
-    )
+
+
+class ContextAssetConfig(BaseModel):
+    trace: TraceVideoOpts = Field(default=TraceVideoOpts.OFF)
+    video: TraceVideoOpts = Field(default=TraceVideoOpts.ON)
+    screenshot: ScreenshotOpts = Field(default=ScreenshotOpts.ON_FAILURE)
+
+
+class ContextTimeoutConfig(BaseModel):
+    script_timeout: int = Field(default=60000)  # 1 minute
+    global_timeout: int = Field(default=3600000)  # 1 hour
+    action_timeout: int = Field(default=60000)  # 1 minute
+    expect_timeout: int = Field(default=15000)  # 15 seconds
+    navigation_timeout: int = Field(default=15000)  # 15 seconds
+
+
+class Context(BaseModel):
+    assets: ContextAssetConfig = Field(default_factory=ContextAssetConfig)
+    browser: Browser = Field(default=Browser.CHROMIUM)
+    retries: int = Field(default=0)
+    timeout: ContextTimeoutConfig = Field(default_factory=ContextTimeoutConfig)
+    headless: bool = Field(default=True)
+    base_url: str = Field(default=None)
+    workflows: list[Workflow] = Field(default_factory=list)
+    output_dir: Path = Field(default=None)
+    workflow_dir: Path = Field(default=None)
 
     class Config:
         use_enum_values = True
-
-
-class WorkflowConfiguration(BaseModel):
-    trace: str = Field(default="off")
-    video: str = Field(default="off")
-    retries: int = Field(default=0)
-    headless: bool = Field(default=True)
-    screenshot: str = Field(default="off")
