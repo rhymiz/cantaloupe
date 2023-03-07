@@ -12,7 +12,7 @@ import yaml
 from ..enums import Action
 from ..code_generation.template import get_template_from_fs, template_env
 from ..code_generation.translate import translate_to_playwright
-from ..models import Step, Workflow
+from ..models import Step, Workflow, Context
 
 if typing.TYPE_CHECKING:
     from jinja2 import Template
@@ -36,10 +36,10 @@ class CodeGenerator:
     valid scripts.
     """
 
-    def __init__(self, workflow: "Workflow") -> None:
+    def __init__(self, context: "Context") -> None:
         self._steps: list[str] = []
         self._config: str | None = None
-        self._workflow: "Workflow" = workflow
+        self._context: "Context" = context
 
     def generate(self) -> CodeGeneratorResult:
         """

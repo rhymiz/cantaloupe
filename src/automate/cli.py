@@ -50,7 +50,7 @@ def convert(workflows: pathlib.Path, output: pathlib.Path) -> None:
     context_data = _load_context(workflows)
     if context_data is None:
         click.secho("No context.yaml file found in workflows directory", fg="red")
-        raise click.Abort("No context.yaml file found in workflows directory")
+        raise click.Abort()
 
     workflow_data = _load_workflows(workflows)
     context = Context(
