@@ -30,37 +30,6 @@ class Action(str, enum.Enum):
     GET_BY_ALT_TEXT = "get_by_alt_text"
     GET_BY_PLACEHOLDER = "get_by_placeholder"
 
-    @staticmethod
-    def page_level() -> list["Action"]:
-        """actions that can be used on the page object"""
-        return [
-            Action.GO,
-            Action.BACK,
-            Action.RELOAD,
-            Action.FORWARD,
-            Action.SCREENSHOT,
-        ]
-
-    @staticmethod
-    def recommended() -> list["Action"]:
-        """
-        recommended playwright locators.
-        https://playwright.dev/docs/locators
-
-        example:
-            * `page.getByText()`
-            * `page.getByTestId()`
-        """
-        return [
-            Action.GET_BY_TEXT,
-            Action.GET_BY_ROLE,
-            Action.GET_BY_LABEL,
-            Action.GET_BY_TITLE,
-            Action.GET_BY_TEST_ID,
-            Action.GET_BY_ALT_TEXT,
-            Action.GET_BY_PLACEHOLDER,
-        ]
-
 
 class Browser(str, enum.Enum):
     """Playwright supported browsers"""
@@ -71,3 +40,16 @@ class Browser(str, enum.Enum):
     WEBKIT = "webkit"
     FIREFOX = "firefox"
     CHROMIUM = "chromium"
+
+
+class TraceVideoOpts(str, enum.Enum):
+    ON = "on"
+    OFF = "off"
+    FIRST_TRY = "on-first-retry"
+    ON_FAILURE = "retain-on-failure"
+
+
+class ScreenshotOpts(str, enum.Enum):
+    ON = "on"
+    OFF = "off"
+    ON_FAILURE = "only-on-failure"
