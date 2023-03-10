@@ -39,27 +39,27 @@ def _load_context(workflows: pathlib.Path) -> dict[str, Any] | None:
 
 
 @click.command()
-@click.argument("workflows", required=True, type=click.Path(file_okay=False, dir_okay=True, resolve_path=True))
+@click.argument("directory", required=True, type=click.Path(file_okay=False, dir_okay=True, resolve_path=True))
 @click.option(
     "--output",
     type=click.Path(file_okay=False, dir_okay=True, resolve_path=True),
     default="generated",
     required=False,
 )
-def convert(workflows: pathlib.Path, output: pathlib.Path) -> None:
-    context_data = _load_context(workflows)
+def convert(directory: pathlib.Path, output: pathlib.Path) -> None:
+    context_data = _load_context(directory)
     if context_data is None:
         click.secho("No context.yaml file found in workflows directory", fg="red")
         raise click.Abort()
 
-    workflow_data = _load_workflows(workflows)
+    workflows = _load_workflows(directory)
     context = Context(
         **context_data,
-        workflows=workflow_data,
+        workflows=workflows,
         output_dir=output,
-        workflow_dir=workflows,
+        workflow_dir=directory,
     )
-    print(context.json(indent=4))
+    print(context.json(indent=2))
 
     # wf = Workflow(**yaml.safe_load(workflow))  # type: ignore
     # generator = CodeGenerator(wf)

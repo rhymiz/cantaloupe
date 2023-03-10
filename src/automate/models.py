@@ -1,6 +1,6 @@
 from __future__ import annotations
-from pathlib import Path
 
+from pathlib import Path
 from typing import Any, List, Union
 
 from jinja2 import Template
@@ -67,7 +67,7 @@ class ContextAssetConfig(BaseModel):
     screenshot: ScreenshotOpts = Field(default=ScreenshotOpts.ON_FAILURE)
 
 
-class ContextTimeoutConfig(BaseModel):
+class ContextTimeoutOpts(BaseModel):
     script_timeout: int = Field(default=60000)  # 1 minute
     global_timeout: int = Field(default=3600000)  # 1 hour
     action_timeout: int = Field(default=60000)  # 1 minute
@@ -79,7 +79,7 @@ class Context(BaseModel):
     assets: ContextAssetConfig = Field(default_factory=ContextAssetConfig)
     browser: Browser = Field(default=Browser.CHROMIUM)
     retries: int = Field(default=0)
-    timeout: ContextTimeoutConfig = Field(default_factory=ContextTimeoutConfig)
+    timeouts: ContextTimeoutOpts = Field(default_factory=ContextTimeoutOpts)
     headless: bool = Field(default=True)
     base_url: str = Field(default=None)
     workflows: list[Workflow] = Field(default_factory=list)

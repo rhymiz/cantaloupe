@@ -6,7 +6,7 @@ assets:
   trace: 'on'
   video: 'on'
   screenshot: 'on'
-timeout:
+timeouts:
   action_timeout: 60000
   global_timeout: 60000
   script_timeout: 60000

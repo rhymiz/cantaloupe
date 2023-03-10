@@ -9,10 +9,10 @@ from typing import Any
 
 import yaml
 
-from ..enums import Action
 from ..code_generation.template import get_template_from_fs, template_env
 from ..code_generation.translate import translate_to_playwright
-from ..models import Step, Workflow, Context
+from ..enums import Action
+from ..models import Context, Step, Workflow
 
 if typing.TYPE_CHECKING:
     from jinja2 import Template
@@ -46,16 +46,16 @@ class CodeGenerator:
         generates the code for a given workflow
         """
         self._generate_steps(self._workflow)
-        script = get_template_from_fs("spec.txt")
+        spec = get_template_from_fs("spec.txt")
         config = get_template_from_fs("playwright.config.txt")
         return CodeGeneratorResult(
-            test_file=script.render(
+            test_file=spec.render(
                 {
                     "name": self._workflow.name,
                     "steps": self._steps,
                 }
             ),
-            config_file=config.render({"workflow": self._workflow}),
+            config_file=config.render({"context": self._context}),
         )
 
     def _handle_workflow_import(self, step: "Step") -> "Workflow":
