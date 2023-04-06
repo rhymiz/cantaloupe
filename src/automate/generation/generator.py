@@ -8,9 +8,9 @@ from typing import Any
 
 import yaml
 
-from ..code_generation.template import get_template_from_fs, template_env
-from ..code_generation.translate import translate_to_playwright
 from ..enums import Action
+from ..generation.template import get_template_from_fs, template_env
+from ..generation.translate import translate_to_playwright
 from ..models import Workflow
 from ..utils.string_utils import slugify
 

@@ -6,8 +6,8 @@ from typing import Any, List, Union
 from jinja2 import Template
 from pydantic import BaseModel, Field
 
-from .code_generation.template import get_template_from_fs, get_template_from_string
 from .enums import Action, Browser, ScreenshotOpts, TraceVideoOpts
+from .generation.template import get_template_from_fs, get_template_from_string
 
 
 class Step(BaseModel):

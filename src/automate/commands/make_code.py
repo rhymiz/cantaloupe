@@ -5,7 +5,7 @@ import pathlib
 
 import click
 
-from ..code_generation.generator import CodeGenerator, GeneratedData
+from ..generation.generator import CodeGenerator, GeneratedData
 from ..load import load_workflow_context, load_workflows
 from ..models import Context
 
