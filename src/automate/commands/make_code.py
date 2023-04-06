@@ -32,6 +32,7 @@ def make_code(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
         raise click.Abort()
 
     output = pathlib.Path(output)
+    workflow_path = pathlib.Path(workflow_path)
 
     workflows = load_workflows(workflow_path)
     context = Context(

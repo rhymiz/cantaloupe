@@ -21,6 +21,7 @@ EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
         Action.GET_BY_ROLE: "getByRole",
         Action.GET_BY_TITLE: "getByTitle",
         Action.GET_BY_LABEL: "getByLabel",
+        Action.WAIT_FOR_URL: "waitForURL",
         Action.GET_BY_ALT_TEXT: "getByAltText",
         Action.GET_BY_PLACEHOLDER: "getByPlaceholder",
     },

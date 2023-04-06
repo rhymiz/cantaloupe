@@ -1,0 +1,2 @@
+{%- from 'macros/action_with_selector.txt' import action_with_selector -%}
+{{ action_with_selector(action, input, input_options) }}

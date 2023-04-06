@@ -8,3 +8,5 @@ steps:
   - action: type
     selector: "input[name='q']"
     input: "https://jsonplaceholder.typicode.com/todos/1"
+  - action: wait_for_url
+    input: "https://jsonplaceholder.typicode.com/todos/1"

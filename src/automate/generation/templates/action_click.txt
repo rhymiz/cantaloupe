@@ -1,2 +1,2 @@
-{%- from 'macros/action_with_locator.txt' import action_with_selector -%}
+{%- from 'macros/action_with_selector.txt' import action_with_selector -%}
 {{ action_with_selector(action, selector, selector_options, input_options) }}

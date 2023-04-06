@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, List, Union
+from typing import Any, Iterable, List, Union
 
 from jinja2 import Template
 from pydantic import BaseModel, Field
@@ -82,7 +82,7 @@ class Context(BaseModel):
     timeouts: ContextTimeoutOpts = Field(default_factory=ContextTimeoutOpts)
     headless: bool = Field(default=True)
     base_url: str = Field(default=None)
-    workflows: list[Workflow] = Field(default_factory=list)
+    workflows: Iterable[Workflow] = Field(default_factory=list)
     output_dir: Path = Field(default=None)
     workflow_dir: Path = Field(default=None)
 

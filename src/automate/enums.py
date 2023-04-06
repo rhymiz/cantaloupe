@@ -26,6 +26,7 @@ class Action(str, enum.Enum):
     GET_BY_LABEL = "get_by_label"
     SET_VARIABLE = "set_variable"
     USE_VARIABLE = "use_variable"
+    WAIT_FOR_URL = "wait_for_url"
     GET_BY_TEST_ID = "get_by_test_id"
     GET_BY_ALT_TEXT = "get_by_alt_text"
     GET_BY_PLACEHOLDER = "get_by_placeholder"

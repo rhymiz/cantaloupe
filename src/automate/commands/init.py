@@ -24,7 +24,7 @@ timeouts:
 _INITIAL_WORKFLOW = """
 name: "Google Search"
 steps:
-  - action: goto
+  - action: go
     input: "https://www.google.com"
   - action: type
     selector: "input[name=q]"
