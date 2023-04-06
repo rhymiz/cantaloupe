@@ -55,7 +55,7 @@ class WorkflowVariable(BaseModel):
 
 
 class Workflow(BaseModel):
-    name: str
+    name: str = Field(max_length=55)
     steps: list[Step]
     file_name: str = Field(default=None)
     variables: list[WorkflowVariable] = Field(default=[])

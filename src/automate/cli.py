@@ -7,8 +7,9 @@ from typing import Any
 import click
 import yaml
 
-from .code_generation.generator import CodeGenerator
-from .models import Context, Workflow
+from .code_generation.generator import CodeGenerator, GeneratedData
+from .load import load_workflow_context, load_workflows
+from .models import Context
 
 
 def _create_structure(dst: pathlib.Path) -> pathlib.Path:
@@ -23,43 +24,34 @@ def entry() -> None:
     pass
 
 
-def _load_workflows(workflows: pathlib.Path) -> list[Workflow]:
-    return [
-        Workflow(**yaml.safe_load(workflow.read_text()), file_name=workflow.name)
-        for workflow in pathlib.Path(workflows).glob("*.yaml")
-        if workflow.name != "context.yaml"
-    ]
-
-
-def _load_context(workflows: pathlib.Path) -> dict[str, Any] | None:
-    context_file = pathlib.Path(os.path.join(workflows, "context.yaml"))
-    if context_file.exists():
-        return yaml.safe_load(context_file.read_text())
-    return None
-
-
 @click.command()
-@click.argument("directory", required=True, type=click.Path(file_okay=False, dir_okay=True, resolve_path=True))
+@click.argument("workflow-path", required=True, type=click.Path(file_okay=False, dir_okay=True, resolve_path=True))
 @click.option(
     "--output",
     type=click.Path(file_okay=False, dir_okay=True, resolve_path=True),
     default="generated",
     required=False,
 )
-def convert(directory: pathlib.Path, output: pathlib.Path) -> None:
-    context_data = _load_context(directory)
+def convert(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
+    context_data = load_workflow_context(workflow_path)
     if context_data is None:
-        click.secho("No context.yaml file found in workflows directory", fg="red")
+        click.secho(f"Missing context.yaml file in {workflow_path.name} directory", fg="red")
         raise click.Abort()
 
-    workflows = _load_workflows(directory)
+    workflows = load_workflows(workflow_path)
     context = Context(
         **context_data,
         workflows=workflows,
         output_dir=output,
-        workflow_dir=directory,
+        workflow_dir=workflow_path,
     )
-    print(context.json(indent=2))
+
+    generator = CodeGenerator(context)
+
+    data: GeneratedData = generator.generate()
+    for spec in data.specs:
+        print(spec.path)
+        print(spec.content)
 
     # wf = Workflow(**yaml.safe_load(workflow))  # type: ignore
     # generator = CodeGenerator(wf)
