@@ -14,11 +14,11 @@ export default defineConfig({
     reporter: [['json', {"outputFile": "report.json"}],["list"]],
     use: {
         {% if context.base_url %}baseURL: '{{ context.base_url }}',{% endif %}
-        trace: '{{ context.assets.trace }}',
+        trace: '{{ context.assets.trace.value }}',
         headless: true,
         browserName: '{{ context.browser }}',
-        video: '{{ context.assets.video }}',
-        screenshot: '{{ context.assets.screenshot }}',
+        video: '{{ context.assets.video.value }}',
+        screenshot: '{{ context.assets.screenshot.value }}',
         ignoreHTTPSErrors: true,
         actionTimeout: 15000,
         navigationTimeout: 15000,
