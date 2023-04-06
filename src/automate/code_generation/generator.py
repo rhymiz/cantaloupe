@@ -11,12 +11,13 @@ import yaml
 from ..code_generation.template import get_template_from_fs, template_env
 from ..code_generation.translate import translate_to_playwright
 from ..enums import Action
-from ..models import Step, Workflow
+from ..models import Workflow
+from ..utils.string_utils import slugify
 
 if typing.TYPE_CHECKING:
     from jinja2 import Template
 
-    from ..models import Context
+    from ..models import Context, Step
 
 
 @dataclass(frozen=True)
@@ -43,16 +44,25 @@ class CodeGenerator:
 
     def generate(self) -> GeneratedData:
         """
-        generates the code for a given workflow
+        generates the code for all given workflows
         """
 
         specs: list[Spec] = []
+        file_names: list[str] = []
         for workflow in self._context.workflows:
             steps = self.generate_steps(workflow)
+
+            # check for duplicate workflow names
+            # in the future we might want to allow this by appending a number to the name.
+            file_name = slugify(workflow.name) + ".spec.js"
+            if file_name in file_names:
+                raise ValueError(f"Duplicate workflow name: {workflow.name}")
+
+            file_names.append(file_name)
             specs.append(
                 Spec(
-                    name=workflow.name,
-                    path=os.path.join(self._context.output_dir, workflow.name),
+                    name=file_name,
+                    path=os.path.join(self._context.output_dir / "tests", file_name),
                     content=get_template_from_fs("spec.txt").render(
                         {
                             "name": workflow.name,

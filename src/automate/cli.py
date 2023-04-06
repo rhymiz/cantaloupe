@@ -2,17 +2,15 @@ from __future__ import annotations
 
 import os
 import pathlib
-from typing import Any
 
 import click
-import yaml
 
 from .code_generation.generator import CodeGenerator, GeneratedData
 from .load import load_workflow_context, load_workflows
 from .models import Context
 
 
-def _create_structure(dst: pathlib.Path) -> pathlib.Path:
+def _create_output_directory(dst: pathlib.Path) -> pathlib.Path:
     dst.mkdir(exist_ok=True)
     test_dir = dst / "tests"
     test_dir.mkdir(exist_ok=True)
@@ -32,11 +30,13 @@ def entry() -> None:
     default="generated",
     required=False,
 )
-def convert(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
+def make_code(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
     context_data = load_workflow_context(workflow_path)
     if context_data is None:
         click.secho(f"Missing context.yaml file in {workflow_path.name} directory", fg="red")
         raise click.Abort()
+
+    output = pathlib.Path(output)
 
     workflows = load_workflows(workflow_path)
     context = Context(
@@ -49,20 +49,15 @@ def convert(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
     generator = CodeGenerator(context)
 
     data: GeneratedData = generator.generate()
+
+    _create_output_directory(output)
+
     for spec in data.specs:
-        print(spec.path)
-        print(spec.content)
+        with open(spec.path, "w") as f:
+            f.write(spec.content)
 
-    # wf = Workflow(**yaml.safe_load(workflow))  # type: ignore
-    # generator = CodeGenerator(wf)
-    # generated = generator.generate()
-    # path = _create_structure(dst)
-
-    # with open(path / "playwright.config.js", "w") as file:
-    #     file.write(generated.config_file)
-
-    # with open(path / "tests" / "test_01.spec.js", "w") as file:
-    #     file.write(generated.test_file)
+    with open(os.path.join(output, "playwright.config.js"), "w") as f:
+        f.write(data.config)
 
 
-entry.add_command(convert)
+entry.add_command(make_code)

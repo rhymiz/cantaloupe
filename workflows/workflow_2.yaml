@@ -1,4 +1,4 @@
-name: "Google Search"
+name: "Google Searches"
 steps:
   - use: 'facebook-login'
     action: import
