@@ -82,41 +82,7 @@ TBD
     * 📝 post step end
     * 📝 post test end
     * 📝 post testsuite end
-* ✅ import workflows from `automate.contrib.workflows`
-    * ✅ merge workflow steps into caller
 
 # Contributing
 
 TBD
-
-# Ideas
-
-Workflows can be published by developers to a marketplace and can be used in other workflows.
-To achieve this, we need to create a workflow engine that can be extended safely, with a clean public API.
-
-Example:
-
-* a workflow that can be used to login to a website, which can be used in other workflows
-
-reusable workflow structure:
-
-```directory
-workflow/
-  manifest.yml
-  workflow.yml
-  assets/
-    logo.png
-```
-
-a manifest.yml file will define the schema and inputs required to fullfill the workflow.
-
-```yaml
-name: "Login"
-author: "Lemuel Boyce"
-description: "Login to a website"
-inputs:
-  - name: "username"
-    type: "string"
-  - name: "password"
-    type: "string"
-```

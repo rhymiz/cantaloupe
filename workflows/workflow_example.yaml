@@ -1,0 +1,10 @@
+
+name: "Google Search"
+steps:
+  - action: goto
+    input: "https://www.google.com"
+  - action: type
+    selector: "input[name=q]"
+    input: "Hello World"
+  - action: click
+    selector: "input[name=btnK]"
