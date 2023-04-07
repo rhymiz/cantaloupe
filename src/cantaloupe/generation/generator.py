@@ -5,16 +5,14 @@ import typing
 from typing import Any
 
 import yaml
+from jinja2 import Template, select_autoescape
 
 from ..enums import Action
-from ..generation.template import get_template_from_fs, template_env
+from ..frameworks import pm
 from ..models import Workflow
-from ..plugins import pm
-from ._dataclasses import BuildResult, GeneratorResult, Spec
+from .types import BuildResult, File, GeneratorResult
 
 if typing.TYPE_CHECKING:
-    from jinja2 import Template
-
     from ..models import Context, Step
 
 
@@ -33,7 +31,9 @@ class CodeGenerator:
         generates the code for all given workflows
         """
 
-        specs: list[Spec] = []
+        pm.hook.setup_framework(context=self._context)
+
+        files: list[File] = []
         file_names: list[str] = []
         for raw_workflow in self._context.workflows:
             worklow_begin = pm.hook.workflow_build_begin(workflow=raw_workflow)  # type: ignore
@@ -54,10 +54,10 @@ class CodeGenerator:
 
             workflow_complete = pm.hook.workflow_build_complete(result=BuildResult(workflow=workflow, spec=spec))
             spec = workflow_complete[0].spec if len(workflow_complete) > 0 else spec
-            specs.append(spec)
+            files.append(spec)
 
-        config = get_template_from_fs("playwright.config.txt")
-        return GeneratorResult(specs=specs, config=config.render({"context": self._context}))
+        pm.hook.teardown_framework(context=self._context)
+        return GeneratorResult(files=files, errors=self._reported_errors)
 
     def import_workflow(self, step: "Step") -> "Workflow":
         """
@@ -68,7 +68,7 @@ class CodeGenerator:
         with open(file_path, encoding="utf-8") as file:
             string = file.read()
             file.close()
-            template: "Template" = template_env.from_string(string)
+            template = Template(string, autoescape=select_autoescape())
             hydrated: str = template.render(step.variables)
             workflow: dict[str, Any] = yaml.safe_load(hydrated)
             return Workflow(**workflow)

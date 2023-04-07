@@ -3,11 +3,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Iterable, List, Union
 
-from jinja2 import Template
 from pydantic import BaseModel, Field
 
 from .enums import Action, Browser, ScreenshotOpts, TraceVideoOpts
-from .generation.template import get_template_from_fs, get_template_from_string
 
 
 class Step(BaseModel):
@@ -25,24 +23,6 @@ class Step(BaseModel):
     selector_options: dict[str, Any] = Field(default_factory=dict)
     template: str = Field(default=None)
     variables: dict[str, Any] = Field(default_factory=dict)
-
-    @property
-    def template_object(self) -> Template:
-        """Return a jinja Template object that can be rendered"""
-        if self.template:
-            return get_template_from_string(self.template)
-        else:
-            return get_template_from_fs(self._template_name)
-
-    @template_object.setter
-    def template_object(self, value: Any) -> None:
-        raise AttributeError("cannot set value for Step.template_object")
-
-    @property
-    def _template_name(self) -> str:
-        """select a default template based on action"""
-        prefix = "action_"
-        return f"{prefix}{self.action}.txt"
 
     class Config:
         use_enum_values = True

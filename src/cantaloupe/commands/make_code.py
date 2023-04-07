@@ -5,7 +5,7 @@ import pathlib
 
 import click
 
-from ..generation.generator import CodeGenerator, GeneratedData
+from ..generation.generator import CodeGenerator, GeneratorResult
 from ..loaders import load_workflow_context, load_workflows
 from ..models import Context
 
@@ -44,11 +44,11 @@ def make_code(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
 
     generator = CodeGenerator(context)
 
-    data: GeneratedData = generator.generate()
+    data: GeneratorResult = generator.generate()
 
     _create_output_directory(output)
 
-    for spec in data.specs:
+    for spec in data.files:
         with open(spec.path, "w") as f:
             f.write(spec.content)
 

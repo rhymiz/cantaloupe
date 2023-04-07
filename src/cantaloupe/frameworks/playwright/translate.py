@@ -3,7 +3,7 @@
 
 from collections import defaultdict
 
-from ..enums import Action
+from ...enums import Action
 
 EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
     str,
