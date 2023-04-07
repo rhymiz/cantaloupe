@@ -10,6 +10,7 @@ EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
     {
         Action.GO: "goto",
         Action.TYPE: "type",
+        Action.BACK: "goBack",
         Action.CLEAR: "clear",
         Action.PRESS: "press",
         Action.FOCUS: "focus",

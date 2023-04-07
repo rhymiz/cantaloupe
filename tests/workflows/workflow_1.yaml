@@ -1,0 +1,7 @@
+name: "Google Search"
+steps:
+  - action: go
+    input: "https://www.google.com"
+  - action: type
+    selector: "input[name='q']"
+    input: "dogs"

@@ -1,0 +1,14 @@
+device: "Desktop Chrome"
+browser: "chromium"
+headless: true
+base_url: https://www.google.com
+assets:
+  trace: 'on'
+  video: 'on'
+  screenshot: 'on'
+timeouts:
+  action_timeout: 60000
+  global_timeout: 60000
+  script_timeout: 60000
+  expect_timeout: 15000
+  navigation_timeout: 15000
