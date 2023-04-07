@@ -68,7 +68,7 @@ class ContextAssetConfig(BaseModel):
 
 
 class ContextTimeoutOpts(BaseModel):
-    script_timeout: int = Field(default=60000)  # 1 minute
+    script_timeout: int = Field(default=120000)  # 2 minutes
     global_timeout: int = Field(default=3600000)  # 1 hour
     action_timeout: int = Field(default=60000)  # 1 minute
     expect_timeout: int = Field(default=15000)  # 15 seconds

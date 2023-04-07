@@ -2,6 +2,15 @@
 
 The browser automation framework for developers.
 
+## Getting Started
+
+### Requirements
+
+* Python >= 3.9
+* [Node.js](https://nodejs.org/en/) >= 14.0.0
+* [Poetry](https://python-poetry.org/docs/#installation)
+
+
 ## What is this?
 
 Browser Automate is a DSL for automating browser tasks.
