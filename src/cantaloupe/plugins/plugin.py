@@ -1,13 +1,13 @@
 import pluggy
 
-from automate.models import Step, Workflow
+from cantaloupe.models import Step, Workflow
 
 hookspec = pluggy.HookspecMarker("cantaloupe")
 hookimpl = pluggy.HookimplMarker("cantaloupe")
 
 
-class BrowserAutomateSpec:
-    """Marker for browser automate plugin hooks."""
+class CantaloupeSpec:
+    """Marker for cantaloupe plugin hooks."""
 
     def on_workflow_start(self, workflow: Workflow) -> Workflow:
         """Called when a workflow is about to be executed.
@@ -32,5 +32,3 @@ class BrowserAutomateSpec:
             step (Step): The step that has been executed.
         """
         return step
-
-

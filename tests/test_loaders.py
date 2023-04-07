@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from automate.loaders import load_workflow_context, load_workflows
+from cantaloupe.loaders import load_workflow_context, load_workflows
 
 
 def test_load_workflow_context() -> None:

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "browser-automate"
+name = "cantaloupe"
 version = "0.1.0"
 description = ""
 authors = ["Lemi Boyce <lemuelboyce@gmail.com>"]

@@ -1,4 +1,4 @@
-from automate.utils.string_utils import slugify
+from cantaloupe.utils.string_utils import slugify
 
 
 def test_slugify() -> None:

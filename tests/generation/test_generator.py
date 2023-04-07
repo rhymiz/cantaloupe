@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from automate.generation.generator import CodeGenerator
-from automate.loaders import load_workflow_context
-from automate.models import Context
+from cantaloupe.generation.generator import CodeGenerator
+from cantaloupe.loaders import load_workflow_context
+from cantaloupe.models import Context
 
 
 def test_generate_playwright_config_file() -> None:

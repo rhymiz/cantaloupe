@@ -13,7 +13,7 @@ The browser automation framework for developers.
 
 ## What is this?
 
-Browser Automate is a DSL for automating browser tasks.
+Cantaloupe is a DSL for automating browser tasks.
 Currently, it is a wrapper around [Playwright](https://playwright.dev/docs/intro).
 
 The goal is to eventually create a workflow engine that can be extended to support other automation frameworks and
