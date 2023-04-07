@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from dataclasses import field
 
 from ..models import Workflow
 
@@ -16,7 +17,7 @@ class Spec:
 class GeneratorResult:
     specs: list[Spec]
     config: str
-    errors: list[str] = dataclass.field(default_factory=list)
+    errors: list[str] = field(default_factory=list)
 
 
 @dataclass(frozen=True)

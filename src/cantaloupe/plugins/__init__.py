@@ -3,7 +3,6 @@ import os
 import typing
 
 import pluggy
-from jinja2 import Template
 from slugify import slugify
 
 from ..generation._dataclasses import BuildResult, Spec
