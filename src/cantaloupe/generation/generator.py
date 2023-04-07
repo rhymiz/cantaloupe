@@ -1,36 +1,21 @@
 from __future__ import annotations
 
-import json
 import os
 import typing
-from dataclasses import dataclass
 from typing import Any
 
 import yaml
 
 from ..enums import Action
 from ..generation.template import get_template_from_fs, template_env
-from ..generation.translate import translate_to_playwright
 from ..models import Workflow
-from ..utils.string_utils import slugify
+from ..plugins import pm
+from ._dataclasses import BuildResult, GeneratorResult, Spec
 
 if typing.TYPE_CHECKING:
     from jinja2 import Template
 
     from ..models import Context, Step
-
-
-@dataclass(frozen=True)
-class Spec:
-    name: str
-    path: str
-    content: str
-
-
-@dataclass(frozen=True)
-class GeneratedData:
-    specs: list[Spec]
-    config: str
 
 
 class CodeGenerator:
@@ -41,44 +26,38 @@ class CodeGenerator:
 
     def __init__(self, context: "Context") -> None:
         self._context: "Context" = context
+        self._reported_errors: list[str] = []
 
-    def generate(self) -> GeneratedData:
+    def generate(self) -> GeneratorResult:
         """
         generates the code for all given workflows
         """
 
         specs: list[Spec] = []
         file_names: list[str] = []
-        for workflow in self._context.workflows:
+        for raw_workflow in self._context.workflows:
+            worklow_begin = pm.hook.workflow_build_begin(workflow=raw_workflow)  # type: ignore
+            workflow = worklow_begin[0] if len(worklow_begin) > 0 else raw_workflow
+
             steps = self.generate_steps(workflow)
 
-            # check for duplicate workflow names
-            # in the future we might want to allow this by appending a number to the name.
-            file_name = slugify(workflow.name) + ".spec.js"
-            if file_name in file_names:
-                raise ValueError(f"Duplicate workflow name: {workflow.name}")
+            spec_result = pm.hook.build_spec(context=self._context, workflow=workflow, steps=steps)
+            if len(spec_result) == 0:
+                self._report_error("build_spec", workflow)
+                continue
 
-            file_names.append(file_name)
-            specs.append(
-                Spec(
-                    name=file_name,
-                    path=os.path.join(self._context.output_dir / "tests", file_name),
-                    content=get_template_from_fs("spec.txt").render(
-                        {
-                            "name": workflow.name,
-                            "steps": steps,
-                        }
-                    ),
-                )
-            )
+            spec = spec_result[0]
+            if spec.name in file_names:
+                raise ValueError(f"Duplicate spec: {spec.name}")
 
-        config = get_template_from_fs("playwright.config.txt").render(
-            {
-                "context": self._context,
-            }
-        )
+            file_names.append(spec.name)
 
-        return GeneratedData(specs=specs, config=config)
+            workflow_complete = pm.hook.workflow_build_complete(result=BuildResult(workflow=workflow, spec=spec))
+            spec = workflow_complete[0].spec if len(workflow_complete) > 0 else spec
+            specs.append(spec)
+
+        config = get_template_from_fs("playwright.config.txt")
+        return GeneratorResult(specs=specs, config=config.render({"context": self._context}))
 
     def import_workflow(self, step: "Step") -> "Workflow":
         """
@@ -111,18 +90,17 @@ class CodeGenerator:
                         raise ValueError("Nested imports are not supported")
                     steps.append(self.generate_step(istep))
             else:
-                steps.append(self.generate_step(step))
+                step_result = self.generate_step(step)
+                if step_result:
+                    steps.append(step_result)
         return steps
 
-    def generate_step(self, step: "Step") -> str:
+    def generate_step(self, step: "Step") -> str | None:
         """
         generates one or many lines of code for a given step
         """
-        context: dict[str, Any] = {
-            "input": json.dumps(step.input),
-            "action": translate_to_playwright(step.action),
-            "selector": json.dumps(step.selector),
-            "input_options": json.dumps(step.input_options),
-            "selector_options": json.dumps(step.selector_options),
-        }
-        return step.template_object.render(context)
+        result = pm.hook.render_step(step=step)
+        return result[0] if len(result) > 0 else None
+
+    def _report_error(self, hook_name: str, entity: Any) -> None:
+        self._reported_errors.append(f"{hook_name} hook did not return a value for: {entity}")
