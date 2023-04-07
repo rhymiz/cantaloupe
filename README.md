@@ -1,4 +1,4 @@
-# Browser Automate
+# Cantaloupe
 
 The browser automation framework for developers.
 

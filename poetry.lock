@@ -465,7 +465,7 @@ pyee = "9.0.4"
 name = "pluggy"
 version = "1.0.0"
 description = "plugin and hook calling mechanisms for python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 files = [
@@ -749,4 +749,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "8ff1a967fa7c8eb6447e35a44697e5dc3b815b672a2ff4fe8ddb5d2a12523501"
+content-hash = "b42975a1127f701faf18699260adea484e8d3be3673676efdb5d02b446cce644"
