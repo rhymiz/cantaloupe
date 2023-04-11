@@ -15,8 +15,9 @@ def test_generate_playwright_config_file() -> None:
     context = Context(**context_data, workflows=[], output_dir=Path(), workflow_dir=workflow_path)
     generator = CodeGenerator(context)
     data = generator.generate()
+    config = filter(lambda x: x.name == "playwright.config.js", data.files)
     assert (
-        data.config
+        next(config).content
         == """
 import { defineConfig, devices } from '@playwright/test';
 

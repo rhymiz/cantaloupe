@@ -3,17 +3,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import NewType
 
+from pydantic import BaseModel
+
 from ..models import Workflow
 
 
-@dataclass(frozen=False)
-class File:
+class File(BaseModel):
     name: str
     path: str
     content: str
 
 
 Spec = NewType("Spec", File)
+Config = NewType("Config", File)
 
 
 @dataclass(frozen=True)

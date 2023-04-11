@@ -3,7 +3,7 @@ import typing
 import pluggy
 
 if typing.TYPE_CHECKING:
-    from ..generation.types import BuildResult, Spec
+    from ..generation.types import BuildResult, Spec, Config
     from ..models import Context, Step, Workflow
 
 hookspec = pluggy.HookspecMarker("cantaloupe")
@@ -77,3 +77,14 @@ class CantaloupeSpec:
         :rtype: str
         """
         pass
+
+    @hookspec
+    def cantaloupe_build_config_files(self, context: "Context") -> list["Config"]:
+        """
+        This hook is called to build config files for the current run.
+        :param context: The build context of the current run
+        :type context: Context
+        :return: None
+        :rtype: None
+        """
+        return []

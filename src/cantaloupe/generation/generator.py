@@ -61,6 +61,9 @@ class CodeGenerator:
             spec = workflow_complete[0].spec if len(workflow_complete) > 0 else spec
             files.append(spec)
 
+        config_files = plugin_manager.hook.cantaloupe_build_config_files(context=self._context)
+        if len(config_files) > 0:
+            files.extend(config_files[0])
         plugin_manager.hook.cantaloupe_teardown(context=self._context)
         return GeneratorResult(files=files, errors=self._reported_errors)
 

@@ -45,6 +45,17 @@ class PlaywrightPlugin:
         )
 
     @hookimpl
+    def cantaloupe_build_config_files(self, context: "Context") -> list[File]:
+        filename = "playwright.config.js"
+        return [
+            File(
+                name=filename,
+                path=os.path.join(context.output_dir, filename),
+                content=get_template_from_fs("playwright.config.txt").render(context=context),
+            )
+        ]
+
+    @hookimpl
     def cantaloupe_setup(self, context: "Context") -> None:
         pass
 
