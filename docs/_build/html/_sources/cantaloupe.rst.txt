@@ -1,0 +1,32 @@
+cantaloupe package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   cantaloupe.commands
+   cantaloupe.frameworks
+   cantaloupe.generation
+   cantaloupe.utils
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   cantaloupe.cli
+   cantaloupe.enums
+   cantaloupe.models
+   cantaloupe.types
+
+Module contents
+---------------
+
+.. automodule:: cantaloupe
+   :members:
+   :undoc-members:
+   :show-inheritance:
