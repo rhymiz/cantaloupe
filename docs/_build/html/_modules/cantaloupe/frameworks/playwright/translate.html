@@ -62,9 +62,11 @@
 
 
 <div class="viewcode-block" id="translate_to_playwright"><a class="viewcode-back" href="../../../../cantaloupe.frameworks.playwright.translate.html#cantaloupe.frameworks.playwright.translate.translate_to_playwright">[docs]</a><span class="k">def</span> <span class="nf">translate_to_playwright</span><span class="p">(</span><span class="n">event_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;convert workflow event names to playwright methods.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    convert workflow event names to playwright methods.</span>
 
 <span class="sd">    :param: event_name str: name passed in from workflow</span>
+<span class="sd">    :type: event_name str: str</span>
 <span class="sd">    :return: str: playwright method name</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">EVENT_TO_PLAYWRIGHT</span><span class="p">[</span><span class="n">event_name</span><span class="p">]</span> <span class="ow">or</span> <span class="n">event_name</span></div>

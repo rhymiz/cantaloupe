@@ -20,6 +20,7 @@ Submodules
 
    cantaloupe.cli
    cantaloupe.enums
+   cantaloupe.loaders
    cantaloupe.models
    cantaloupe.types
 

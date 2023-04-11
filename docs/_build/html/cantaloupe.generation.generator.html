@@ -32,8 +32,41 @@
 
           <div class="body" role="main">
             
-  <section id="cantaloupe-generation-generator-module">
-<h1>cantaloupe.generation.generator module<a class="headerlink" href="#cantaloupe-generation-generator-module" title="Permalink to this heading">¶</a></h1>
+  <section id="module-cantaloupe.generation.generator">
+<span id="cantaloupe-generation-generator-module"></span><h1>cantaloupe.generation.generator module<a class="headerlink" href="#module-cantaloupe.generation.generator" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.generation.generator.CodeGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.generation.generator.</span></span><span class="sig-name descname"><span class="pre">CodeGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="cantaloupe.models.html#cantaloupe.models.Context" title="cantaloupe.models.Context"><span class="pre">Context</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/generation/generator.html#CodeGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.generation.generator.CodeGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is responsible for translation YAML into
+valid scripts.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="cantaloupe.generation.generator.CodeGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="cantaloupe.types.html#cantaloupe.types.GeneratorResult" title="cantaloupe.types.GeneratorResult"><span class="pre">GeneratorResult</span></a></span></span><a class="reference internal" href="_modules/cantaloupe/generation/generator.html#CodeGenerator.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.generation.generator.CodeGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates the code for all given workflows</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cantaloupe.generation.generator.CodeGenerator.generate_step">
+<span class="sig-name descname"><span class="pre">generate_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="cantaloupe.models.html#cantaloupe.models.Step" title="cantaloupe.models.Step"><span class="pre">Step</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cantaloupe/generation/generator.html#CodeGenerator.generate_step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.generation.generator.CodeGenerator.generate_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates one or many lines of code for a given step</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cantaloupe.generation.generator.CodeGenerator.generate_steps">
+<span class="sig-name descname"><span class="pre">generate_steps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="cantaloupe.models.html#cantaloupe.models.Workflow" title="cantaloupe.models.Workflow"><span class="pre">Workflow</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/cantaloupe/generation/generator.html#CodeGenerator.generate_steps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.generation.generator.CodeGenerator.generate_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>iterates over all steps in the workflow
+and calls lifecycle hooks.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cantaloupe.generation.generator.CodeGenerator.import_workflow">
+<span class="sig-name descname"><span class="pre">import_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="cantaloupe.models.html#cantaloupe.models.Step" title="cantaloupe.models.Step"><span class="pre">Step</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="cantaloupe.models.html#cantaloupe.models.Workflow" title="cantaloupe.models.Workflow"><span class="pre">Workflow</span></a></span></span><a class="reference internal" href="_modules/cantaloupe/generation/generator.html#CodeGenerator.import_workflow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.generation.generator.CodeGenerator.import_workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>imports a yaml file and returns a Workflow object</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -65,7 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="cantaloupe.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cantaloupe.html#module-contents">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cantaloupe.html#module-cantaloupe">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -114,7 +147,7 @@
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="_sources/cantaloupe.generation.generator.rst.txt"
