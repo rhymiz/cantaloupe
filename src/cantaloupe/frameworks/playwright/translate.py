@@ -30,9 +30,9 @@ EVENT_TO_PLAYWRIGHT: dict[str, str] = defaultdict(
 
 
 def translate_to_playwright(event_name: str) -> str:
-    """
-    convert workflow event names to playwright methods.
+    """convert workflow event names to playwright methods.
 
-    arg: event_name str: name passed in from workflow
+    :param: event_name str: name passed in from workflow
+    :return: str: playwright method name
     """
     return EVENT_TO_PLAYWRIGHT[event_name] or event_name

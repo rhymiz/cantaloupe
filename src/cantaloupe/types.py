@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import NewType
 
 from pydantic import BaseModel
 
-from ..models import Workflow
+from .models import Workflow
 
 
 class File(BaseModel):
@@ -14,8 +13,20 @@ class File(BaseModel):
     content: str
 
 
-Spec = NewType("Spec", File)
-Config = NewType("Config", File)
+class Spec(File):
+    """
+    This class represents a spec file.
+    """
+
+    pass
+
+
+class Config(File):
+    """
+    This class represents a configuration file.
+    """
+
+    pass
 
 
 @dataclass(frozen=True)

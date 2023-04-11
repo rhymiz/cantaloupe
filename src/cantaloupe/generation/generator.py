@@ -7,10 +7,10 @@ from typing import Any
 import yaml
 from jinja2 import Template, select_autoescape
 
-from .types import BuildResult, File, GeneratorResult
 from ..enums import Action
 from ..frameworks import plugin_manager
 from ..models import Workflow
+from ..types import BuildResult, File, GeneratorResult
 
 if typing.TYPE_CHECKING:
     from ..models import Context, Step

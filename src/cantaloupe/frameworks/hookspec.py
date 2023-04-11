@@ -3,7 +3,7 @@ import typing
 import pluggy
 
 if typing.TYPE_CHECKING:
-    from ..generation.types import BuildResult, Spec, Config
+    from ..types import BuildResult, Spec, Config
     from ..models import Context, Step, Workflow
 
 hookspec = pluggy.HookspecMarker("cantaloupe")
@@ -52,7 +52,7 @@ class CantaloupeSpec:
         return result
 
     @hookspec
-    def cantaloupe_build_spec(self, context: "Context", workflow: "Workflow", steps: list["Step"]) -> "Spec":
+    def cantaloupe_build_spec(self, context: "Context", workflow: "Workflow", steps: list["str"]) -> "Spec":
         """
         This hook is called to build the spec for a workflow.
 
@@ -61,7 +61,7 @@ class CantaloupeSpec:
         :param workflow: The workflow to build
         :type workflow: Workflow
         :param steps: A list of steps to build
-        :type steps: list[Step]
+        :type steps: list[str]
         :return: The generated spec
         :rtype: Spec
         """
@@ -71,6 +71,10 @@ class CantaloupeSpec:
     def cantaloupe_render_step(self, step: "Step") -> str:
         """
         This hook is called to render a step.
+
+        A step represents a single action in a workflow and directly corresponds to
+        a one or more lines of code in the generated spec.
+
         :param step: The step to render
         :type step: Step
         :return: The rendered step as a string

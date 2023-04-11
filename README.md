@@ -10,7 +10,6 @@ The browser automation framework for developers.
 * [Node.js](https://nodejs.org/en/) >= 14.0.0
 * [Poetry](https://python-poetry.org/docs/#installation)
 
-
 ## What is this?
 
 Cantaloupe is a DSL for automating browser tasks.
@@ -72,9 +71,48 @@ steps:
 * get_by_alt_text
 * get_by_placeholder
 
-## Hooks
+## Adding new framework support
 
-TBD
+To add support for a new framework, you must implement the following methods:
+
+* cantaloupe_build_spec
+* cantaloupe_render_step
+
+
+The following methods are optional:
+
+* cantaloupe_setup
+* cantaloupe_teardown
+* cantaloupe_workflow_build_begin
+* cantaloupe_workflow_build_complete
+* cantaloupe_build_config_files
+
+```python
+from pathlib import Path
+
+from slugify import slugify
+
+from cantaloupe.frameworks.hookspec import hookimpl
+from cantaloupe.models import Step
+from cantaloupe.types import Spec
+
+
+@hookimpl
+def cantaloupe_build_spec(context: "Context", workflow: "Workflow", steps: list[Step]) -> Spec:
+  filename = f"{slugify(workflow.name, separator='_')}.js"
+  # do something with the steps and assign the result to content
+  return Spec(
+          name=filename,
+          content="...",
+          path=Path(context.output_dir, filename),
+  )
+
+
+@hookimpl
+def cantaloupe_render_step(step: Step) -> str:
+  # do something with the step and return the result
+  return "..."
+```
 
 ## TODO:
 
