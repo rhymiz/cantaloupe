@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import pathlib
 
 import click
@@ -17,22 +16,23 @@ def _create_output_directory(dst: pathlib.Path) -> pathlib.Path:
     return dst
 
 
+_TYPE_DIR = click.Path(file_okay=False, dir_okay=True, resolve_path=True)
+
+
 @click.command()
-@click.argument("workflow-path", required=True, type=click.Path(file_okay=False, dir_okay=True, resolve_path=True))
-@click.option(
-    "--output",
-    type=click.Path(file_okay=False, dir_okay=True, resolve_path=True),
-    default="generated",
-    required=False,
-)
-def make_code(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
+@click.argument("workflow-path", required=True, type=_TYPE_DIR)
+@click.option("--output", type=_TYPE_DIR, default="generated", required=False)
+def make_code(workflow_path: pathlib.Path, output: pathlib.Path):
+    output = pathlib.Path(output)
+    workflow_path = pathlib.Path(workflow_path)
+    if not workflow_path.exists():
+        click.secho(f"Workflow directory '{workflow_path.name}' does not exist", fg="red")
+        raise click.Abort()
+
     context_data = load_workflow_context(workflow_path)
     if context_data is None:
         click.secho(f"Missing context.yaml file in {workflow_path.name} directory", fg="red")
         raise click.Abort()
-
-    output = pathlib.Path(output)
-    workflow_path = pathlib.Path(workflow_path)
 
     workflows = load_workflows(workflow_path)
     context = Context(
@@ -51,6 +51,3 @@ def make_code(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
     for spec in data.files:
         with open(spec.path, "w") as f:
             f.write(spec.content)
-
-    with open(os.path.join(output, "playwright.config.js"), "w") as f:
-        f.write(data.config)

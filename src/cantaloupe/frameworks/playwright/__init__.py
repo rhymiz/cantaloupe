@@ -4,10 +4,10 @@ import typing
 
 from slugify import slugify
 
-from ...generation.types import File
-from ..hookspec import hookimpl
 from .template import get_template_from_fs, get_template_from_string
 from .translate import translate_to_playwright
+from ..hookspec import hookimpl
+from ...generation.types import File
 
 if typing.TYPE_CHECKING:
     from ...models import Context, Step, Workflow
@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
 
 class PlaywrightPlugin:
     @hookimpl
-    def render_step(self, step: "Step") -> str:
+    def cantaloupe_render_step(self, step: "Step") -> str:
         context: dict[str, typing.Any] = {
             "input": json.dumps(step.input),
             "action": translate_to_playwright(step.action),
@@ -24,13 +24,13 @@ class PlaywrightPlugin:
             "selector_options": json.dumps(step.selector_options),
         }
         if step.template:
-            template = get_template_from_string(step.template)
+            tpl = get_template_from_string(step.template)
         else:
-            template = get_template_from_fs(f"action_{step.action}.txt")
-        return template.render(context)
+            tpl = get_template_from_fs(f"action_{step.action}.txt")
+        return tpl.render(context)
 
     @hookimpl
-    def build_spec(self, context: "Context", workflow: "Workflow", steps: list["Step"]) -> File:
+    def cantaloupe_build_spec(self, context: "Context", workflow: "Workflow", steps: list["Step"]) -> File:
         spec_content = get_template_from_fs("spec.txt")
         filename = f"{slugify(workflow.name, separator='-')}.spec.js"
         return File(
@@ -45,5 +45,9 @@ class PlaywrightPlugin:
         )
 
     @hookimpl
-    def setup_framework(self, context: "Context") -> None:
+    def cantaloupe_setup(self, context: "Context") -> None:
+        pass
+
+    @hookimpl
+    def cantaloupe_teardown(self, context: "Context") -> None:
         pass

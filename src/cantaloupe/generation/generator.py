@@ -7,10 +7,10 @@ from typing import Any
 import yaml
 from jinja2 import Template, select_autoescape
 
-from ..enums import Action
-from ..frameworks import pm
-from ..models import Workflow
 from .types import BuildResult, File, GeneratorResult
+from ..enums import Action
+from ..frameworks import plugin_manager
+from ..models import Workflow
 
 if typing.TYPE_CHECKING:
     from ..models import Context, Step
@@ -31,19 +31,22 @@ class CodeGenerator:
         generates the code for all given workflows
         """
 
-        pm.hook.setup_framework(context=self._context)
+        plugin_manager.hook.cantaloupe_setup(context=self._context)
 
         files: list[File] = []
         file_names: list[str] = []
         for raw_workflow in self._context.workflows:
-            worklow_begin = pm.hook.workflow_build_begin(workflow=raw_workflow)  # type: ignore
-            workflow = worklow_begin[0] if len(worklow_begin) > 0 else raw_workflow
+            workflow = plugin_manager.hook.cantaloupe_workflow_build_begin(workflow=raw_workflow)  # type: ignore
+            workflow = workflow[0] if len(workflow) > 0 else raw_workflow
 
             steps = self.generate_steps(workflow)
-
-            spec_result = pm.hook.build_spec(context=self._context, workflow=workflow, steps=steps)
+            spec_result = plugin_manager.hook.cantaloupe_build_spec(
+                context=self._context,
+                workflow=workflow,
+                steps=steps,
+            )
             if len(spec_result) == 0:
-                self._report_error("build_spec", workflow)
+                self._report_error("cantaloupe_build_spec", workflow)
                 continue
 
             spec = spec_result[0]
@@ -52,11 +55,13 @@ class CodeGenerator:
 
             file_names.append(spec.name)
 
-            workflow_complete = pm.hook.workflow_build_complete(result=BuildResult(workflow=workflow, spec=spec))
+            workflow_complete = plugin_manager.hook.cantaloupe_workflow_build_complete(
+                result=BuildResult(workflow=workflow, spec=spec)
+            )
             spec = workflow_complete[0].spec if len(workflow_complete) > 0 else spec
             files.append(spec)
 
-        pm.hook.teardown_framework(context=self._context)
+        plugin_manager.hook.cantaloupe_teardown(context=self._context)
         return GeneratorResult(files=files, errors=self._reported_errors)
 
     def import_workflow(self, step: "Step") -> "Workflow":
@@ -99,7 +104,7 @@ class CodeGenerator:
         """
         generates one or many lines of code for a given step
         """
-        result = pm.hook.render_step(step=step)
+        result = plugin_manager.hook.cantaloupe_render_step(step=step)
         return result[0] if len(result) > 0 else None
 
     def _report_error(self, hook_name: str, entity: Any) -> None:
