@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>cantaloupe package &#8212; cantaloupe  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="cantaloupe.commands package" href="cantaloupe.commands.html" />
+    <link rel="prev" title="src" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="cantaloupe-package">
+<h1>cantaloupe package<a class="headerlink" href="#cantaloupe-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cantaloupe.commands.html">cantaloupe.commands package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.commands.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.commands.html#module-cantaloupe.commands.init">cantaloupe.commands.init module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.commands.html#module-cantaloupe.commands.make_code">cantaloupe.commands.make_code module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.commands.html#module-cantaloupe.commands">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cantaloupe.frameworks.html">cantaloupe.frameworks package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.frameworks.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cantaloupe.frameworks.playwright.html">cantaloupe.frameworks.playwright package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.playwright.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.playwright.html#module-cantaloupe.frameworks.playwright.template">cantaloupe.frameworks.playwright.template module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.playwright.html#module-cantaloupe.frameworks.playwright.translate">cantaloupe.frameworks.playwright.translate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.playwright.html#module-cantaloupe.frameworks.playwright">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.frameworks.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.frameworks.html#module-cantaloupe.frameworks.hookspec">cantaloupe.frameworks.hookspec module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_build_config_files"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_build_config_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_build_spec"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_build_spec()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_render_step"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_render_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_setup"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_setup()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_teardown"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_teardown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_workflow_build_begin"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_workflow_build_begin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html#cantaloupe.frameworks.hookspec.CantaloupeSpec.cantaloupe_workflow_build_complete"><code class="docutils literal notranslate"><span class="pre">CantaloupeSpec.cantaloupe_workflow_build_complete()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.frameworks.html#module-cantaloupe.frameworks">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cantaloupe.generation.html">cantaloupe.generation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.generation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.generation.html#module-cantaloupe.generation.generator">cantaloupe.generation.generator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cantaloupe.generation.html#cantaloupe.generation.generator.CodeGenerator"><code class="docutils literal notranslate"><span class="pre">CodeGenerator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.generation.html#cantaloupe.generation.generator.CodeGenerator.generate"><code class="docutils literal notranslate"><span class="pre">CodeGenerator.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.generation.html#cantaloupe.generation.generator.CodeGenerator.generate_step"><code class="docutils literal notranslate"><span class="pre">CodeGenerator.generate_step()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.generation.html#cantaloupe.generation.generator.CodeGenerator.generate_steps"><code class="docutils literal notranslate"><span class="pre">CodeGenerator.generate_steps()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.generation.html#cantaloupe.generation.generator.CodeGenerator.import_workflow"><code class="docutils literal notranslate"><span class="pre">CodeGenerator.import_workflow()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.generation.html#module-cantaloupe.generation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cantaloupe.utils.html">cantaloupe.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.utils.html#module-cantaloupe.utils.string_utils">cantaloupe.utils.string_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cantaloupe.utils.html#cantaloupe.utils.string_utils.slugify"><code class="docutils literal notranslate"><span class="pre">slugify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cantaloupe.utils.html#module-cantaloupe.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-cantaloupe.cli">
+<span id="cantaloupe-cli-module"></span><h2>cantaloupe.cli module<a class="headerlink" href="#module-cantaloupe.cli" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-cantaloupe.enums">
+<span id="cantaloupe-enums-module"></span><h2>cantaloupe.enums module<a class="headerlink" href="#module-cantaloupe.enums" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.enums.</span></span><span class="sig-name descname"><span class="pre">Action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/enums.html#Action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.enums.Action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enum containing all fields
+currently supported by the DSL.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.BACK">
+<span class="sig-name descname"><span class="pre">BACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'back'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.BACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.CLEAR">
+<span class="sig-name descname"><span class="pre">CLEAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'clear'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.CLEAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.CLICK">
+<span class="sig-name descname"><span class="pre">CLICK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'click'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.CLICK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.CODE">
+<span class="sig-name descname"><span class="pre">CODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'code'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.FOCUS">
+<span class="sig-name descname"><span class="pre">FOCUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'focus'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.FOCUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.FORWARD">
+<span class="sig-name descname"><span class="pre">FORWARD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'forward'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.FORWARD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_ALT_TEXT">
+<span class="sig-name descname"><span class="pre">GET_BY_ALT_TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_alt_text'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_ALT_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_LABEL">
+<span class="sig-name descname"><span class="pre">GET_BY_LABEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_label'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_LABEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_PLACEHOLDER">
+<span class="sig-name descname"><span class="pre">GET_BY_PLACEHOLDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_placeholder'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_PLACEHOLDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_ROLE">
+<span class="sig-name descname"><span class="pre">GET_BY_ROLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_role'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_ROLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_TEST_ID">
+<span class="sig-name descname"><span class="pre">GET_BY_TEST_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_test_id'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_TEST_ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_TEXT">
+<span class="sig-name descname"><span class="pre">GET_BY_TEXT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_text'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_TEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GET_BY_TITLE">
+<span class="sig-name descname"><span class="pre">GET_BY_TITLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'get_by_title'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GET_BY_TITLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.GO">
+<span class="sig-name descname"><span class="pre">GO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'go'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.GO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.HOVER">
+<span class="sig-name descname"><span class="pre">HOVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'hover'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.HOVER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.IMPORT">
+<span class="sig-name descname"><span class="pre">IMPORT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'import'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.IMPORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.PRESS">
+<span class="sig-name descname"><span class="pre">PRESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'press'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.PRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.RELOAD">
+<span class="sig-name descname"><span class="pre">RELOAD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reload'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.RELOAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.SCREENSHOT">
+<span class="sig-name descname"><span class="pre">SCREENSHOT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'screenshot'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.SCREENSHOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.SELECT">
+<span class="sig-name descname"><span class="pre">SELECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'select'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.SELECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.SET_VARIABLE">
+<span class="sig-name descname"><span class="pre">SET_VARIABLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'set_variable'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.SET_VARIABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.TYPE">
+<span class="sig-name descname"><span class="pre">TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'type'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.USE_VARIABLE">
+<span class="sig-name descname"><span class="pre">USE_VARIABLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'use_variable'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.USE_VARIABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Action.WAIT_FOR_URL">
+<span class="sig-name descname"><span class="pre">WAIT_FOR_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'wait_for_url'</span></em><a class="headerlink" href="#cantaloupe.enums.Action.WAIT_FOR_URL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.enums.</span></span><span class="sig-name descname"><span class="pre">Browser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/enums.html#Browser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.enums.Browser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Playwright supported browsers</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser.CHROME">
+<span class="sig-name descname"><span class="pre">CHROME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'chrome'</span></em><a class="headerlink" href="#cantaloupe.enums.Browser.CHROME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser.CHROMIUM">
+<span class="sig-name descname"><span class="pre">CHROMIUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'chromium'</span></em><a class="headerlink" href="#cantaloupe.enums.Browser.CHROMIUM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser.EDGE">
+<span class="sig-name descname"><span class="pre">EDGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'edge'</span></em><a class="headerlink" href="#cantaloupe.enums.Browser.EDGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser.FIREFOX">
+<span class="sig-name descname"><span class="pre">FIREFOX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'firefox'</span></em><a class="headerlink" href="#cantaloupe.enums.Browser.FIREFOX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser.SAFARI">
+<span class="sig-name descname"><span class="pre">SAFARI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'webkit'</span></em><a class="headerlink" href="#cantaloupe.enums.Browser.SAFARI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.Browser.WEBKIT">
+<span class="sig-name descname"><span class="pre">WEBKIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'webkit'</span></em><a class="headerlink" href="#cantaloupe.enums.Browser.WEBKIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.enums.ScreenshotOpts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.enums.</span></span><span class="sig-name descname"><span class="pre">ScreenshotOpts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/enums.html#ScreenshotOpts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.enums.ScreenshotOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.ScreenshotOpts.OFF">
+<span class="sig-name descname"><span class="pre">OFF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'off'</span></em><a class="headerlink" href="#cantaloupe.enums.ScreenshotOpts.OFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.ScreenshotOpts.ON">
+<span class="sig-name descname"><span class="pre">ON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'on'</span></em><a class="headerlink" href="#cantaloupe.enums.ScreenshotOpts.ON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.ScreenshotOpts.ON_FAILURE">
+<span class="sig-name descname"><span class="pre">ON_FAILURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'only-on-failure'</span></em><a class="headerlink" href="#cantaloupe.enums.ScreenshotOpts.ON_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.enums.TraceVideoOpts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.enums.</span></span><span class="sig-name descname"><span class="pre">TraceVideoOpts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/enums.html#TraceVideoOpts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.enums.TraceVideoOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.TraceVideoOpts.FIRST_TRY">
+<span class="sig-name descname"><span class="pre">FIRST_TRY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'on-first-retry'</span></em><a class="headerlink" href="#cantaloupe.enums.TraceVideoOpts.FIRST_TRY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.TraceVideoOpts.OFF">
+<span class="sig-name descname"><span class="pre">OFF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'off'</span></em><a class="headerlink" href="#cantaloupe.enums.TraceVideoOpts.OFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.TraceVideoOpts.ON">
+<span class="sig-name descname"><span class="pre">ON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'on'</span></em><a class="headerlink" href="#cantaloupe.enums.TraceVideoOpts.ON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.enums.TraceVideoOpts.ON_FAILURE">
+<span class="sig-name descname"><span class="pre">ON_FAILURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'retain-on-failure'</span></em><a class="headerlink" href="#cantaloupe.enums.TraceVideoOpts.ON_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-cantaloupe.loaders">
+<span id="cantaloupe-loaders-module"></span><h2>cantaloupe.loaders module<a class="headerlink" href="#module-cantaloupe.loaders" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="cantaloupe.loaders.load_workflow_context">
+<span class="sig-prename descclassname"><span class="pre">cantaloupe.loaders.</span></span><span class="sig-name descname"><span class="pre">load_workflow_context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/cantaloupe/loaders.html#load_workflow_context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.loaders.load_workflow_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads the context file from a given directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>workflows</strong> (<em>Path</em>) – directory containing the workflows</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>context file as a dictionary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, Any] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="cantaloupe.loaders.load_workflows">
+<span class="sig-prename descclassname"><span class="pre">cantaloupe.loaders.</span></span><span class="sig-name descname"><span class="pre">load_workflows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workflows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.Workflow" title="cantaloupe.models.Workflow"><span class="pre">Workflow</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/cantaloupe/loaders.html#load_workflows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.loaders.load_workflows" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads all workflows from a given directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>workflows</strong> – Path containing workflows</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>iterable of workflows</p>
+</dd>
+</dl>
+<p>Note: Workflow files must be named workflow_*.yaml</p>
+</dd></dl>
+
+</section>
+<section id="module-cantaloupe.models">
+<span id="cantaloupe-models-module"></span><h2>cantaloupe.models module<a class="headerlink" href="#module-cantaloupe.models" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.Context">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.models.</span></span><span class="sig-name descname"><span class="pre">Context</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.models.ContextAssetConfig" title="cantaloupe.models.ContextAssetConfig"><span class="pre">ContextAssetConfig</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browser</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.enums.Browser" title="cantaloupe.enums.Browser"><span class="pre">Browser</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Browser.CHROMIUM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeouts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.models.ContextTimeoutOpts" title="cantaloupe.models.ContextTimeoutOpts"><span class="pre">ContextTimeoutOpts</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headless</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.Workflow" title="cantaloupe.models.Workflow"><span class="pre">Workflow</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/models.html#Context"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.Context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="_modules/cantaloupe/models.html#Context.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.Context.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.Config.use_enum_values">
+<span class="sig-name descname"><span class="pre">use_enum_values</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#cantaloupe.models.Context.Config.use_enum_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.assets">
+<span class="sig-name descname"><span class="pre">assets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.models.ContextAssetConfig" title="cantaloupe.models.ContextAssetConfig"><span class="pre">ContextAssetConfig</span></a></em><a class="headerlink" href="#cantaloupe.models.Context.assets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.base_url">
+<span class="sig-name descname"><span class="pre">base_url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.Context.base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.browser">
+<span class="sig-name descname"><span class="pre">browser</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.enums.Browser" title="cantaloupe.enums.Browser"><span class="pre">Browser</span></a></em><a class="headerlink" href="#cantaloupe.models.Context.browser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.headless">
+<span class="sig-name descname"><span class="pre">headless</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#cantaloupe.models.Context.headless" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.output_dir">
+<span class="sig-name descname"><span class="pre">output_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#cantaloupe.models.Context.output_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.retries">
+<span class="sig-name descname"><span class="pre">retries</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cantaloupe.models.Context.retries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.timeouts">
+<span class="sig-name descname"><span class="pre">timeouts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.models.ContextTimeoutOpts" title="cantaloupe.models.ContextTimeoutOpts"><span class="pre">ContextTimeoutOpts</span></a></em><a class="headerlink" href="#cantaloupe.models.Context.timeouts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.workflow_dir">
+<span class="sig-name descname"><span class="pre">workflow_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></em><a class="headerlink" href="#cantaloupe.models.Context.workflow_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Context.workflows">
+<span class="sig-name descname"><span class="pre">workflows</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.Workflow" title="cantaloupe.models.Workflow"><span class="pre">Workflow</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.models.Context.workflows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextAssetConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.models.</span></span><span class="sig-name descname"><span class="pre">ContextAssetConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.enums.TraceVideoOpts" title="cantaloupe.enums.TraceVideoOpts"><span class="pre">TraceVideoOpts</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TraceVideoOpts.OFF</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.enums.TraceVideoOpts" title="cantaloupe.enums.TraceVideoOpts"><span class="pre">TraceVideoOpts</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TraceVideoOpts.ON</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screenshot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.enums.ScreenshotOpts" title="cantaloupe.enums.ScreenshotOpts"><span class="pre">ScreenshotOpts</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ScreenshotOpts.ON_FAILURE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/models.html#ContextAssetConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.ContextAssetConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextAssetConfig.screenshot">
+<span class="sig-name descname"><span class="pre">screenshot</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.enums.ScreenshotOpts" title="cantaloupe.enums.ScreenshotOpts"><span class="pre">ScreenshotOpts</span></a></em><a class="headerlink" href="#cantaloupe.models.ContextAssetConfig.screenshot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextAssetConfig.trace">
+<span class="sig-name descname"><span class="pre">trace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.enums.TraceVideoOpts" title="cantaloupe.enums.TraceVideoOpts"><span class="pre">TraceVideoOpts</span></a></em><a class="headerlink" href="#cantaloupe.models.ContextAssetConfig.trace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextAssetConfig.video">
+<span class="sig-name descname"><span class="pre">video</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.enums.TraceVideoOpts" title="cantaloupe.enums.TraceVideoOpts"><span class="pre">TraceVideoOpts</span></a></em><a class="headerlink" href="#cantaloupe.models.ContextAssetConfig.video" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextTimeoutOpts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.models.</span></span><span class="sig-name descname"><span class="pre">ContextTimeoutOpts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">script_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">120000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3600000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">15000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">navigation_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">15000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/models.html#ContextTimeoutOpts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.ContextTimeoutOpts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextTimeoutOpts.action_timeout">
+<span class="sig-name descname"><span class="pre">action_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cantaloupe.models.ContextTimeoutOpts.action_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextTimeoutOpts.expect_timeout">
+<span class="sig-name descname"><span class="pre">expect_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cantaloupe.models.ContextTimeoutOpts.expect_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextTimeoutOpts.global_timeout">
+<span class="sig-name descname"><span class="pre">global_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cantaloupe.models.ContextTimeoutOpts.global_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextTimeoutOpts.navigation_timeout">
+<span class="sig-name descname"><span class="pre">navigation_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cantaloupe.models.ContextTimeoutOpts.navigation_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.ContextTimeoutOpts.script_timeout">
+<span class="sig-name descname"><span class="pre">script_timeout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#cantaloupe.models.ContextTimeoutOpts.script_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.Step">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.models.</span></span><span class="sig-name descname"><span class="pre">Step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#cantaloupe.enums.Action" title="cantaloupe.enums.Action"><span class="pre">Action</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selector_options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/models.html#Step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.Step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>A step in a workflow.</p>
+<p>Describes an action to be taken during workflow execution.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="_modules/cantaloupe/models.html#Step.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.Step.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.Config.use_enum_values">
+<span class="sig-name descname"><span class="pre">use_enum_values</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#cantaloupe.models.Step.Config.use_enum_values" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.action">
+<span class="sig-name descname"><span class="pre">action</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.enums.Action" title="cantaloupe.enums.Action"><span class="pre">Action</span></a></em><a class="headerlink" href="#cantaloupe.models.Step.action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.input">
+<span class="sig-name descname"><span class="pre">input</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.Step.input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.input_options">
+<span class="sig-name descname"><span class="pre">input_options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.models.Step.input_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.selector">
+<span class="sig-name descname"><span class="pre">selector</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.Step.selector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.selector_options">
+<span class="sig-name descname"><span class="pre">selector_options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.models.Step.selector_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.template">
+<span class="sig-name descname"><span class="pre">template</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.Step.template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.use">
+<span class="sig-name descname"><span class="pre">use</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#cantaloupe.models.Step.use" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Step.variables">
+<span class="sig-name descname"><span class="pre">variables</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.models.Step.variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.Workflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.models.</span></span><span class="sig-name descname"><span class="pre">Workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.Step" title="cantaloupe.models.Step"><span class="pre">cantaloupe.models.Step</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.WorkflowVariable" title="cantaloupe.models.WorkflowVariable"><span class="pre">cantaloupe.models.WorkflowVariable</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/models.html#Workflow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.Workflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Workflow.file_name">
+<span class="sig-name descname"><span class="pre">file_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.Workflow.file_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Workflow.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.Workflow.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Workflow.steps">
+<span class="sig-name descname"><span class="pre">steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.Step" title="cantaloupe.models.Step"><span class="pre">cantaloupe.models.Step</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.models.Workflow.steps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.Workflow.variables">
+<span class="sig-name descname"><span class="pre">variables</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.models.WorkflowVariable" title="cantaloupe.models.WorkflowVariable"><span class="pre">cantaloupe.models.WorkflowVariable</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.models.Workflow.variables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.models.WorkflowVariable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.models.</span></span><span class="sig-name descname"><span class="pre">WorkflowVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/models.html#WorkflowVariable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.models.WorkflowVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.WorkflowVariable.default">
+<span class="sig-name descname"><span class="pre">default</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#cantaloupe.models.WorkflowVariable.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.WorkflowVariable.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.WorkflowVariable.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.models.WorkflowVariable.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.models.WorkflowVariable.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-cantaloupe.types">
+<span id="cantaloupe-types-module"></span><h2>cantaloupe.types module<a class="headerlink" href="#module-cantaloupe.types" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.types.BuildResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.types.</span></span><span class="sig-name descname"><span class="pre">BuildResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Spec'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workflow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Workflow'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/types.html#BuildResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.types.BuildResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.BuildResult.spec">
+<span class="sig-name descname"><span class="pre">spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.types.Spec" title="cantaloupe.types.Spec"><span class="pre">Spec</span></a></em><a class="headerlink" href="#cantaloupe.types.BuildResult.spec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.BuildResult.workflow">
+<span class="sig-name descname"><span class="pre">workflow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#cantaloupe.models.Workflow" title="cantaloupe.models.Workflow"><span class="pre">Workflow</span></a></em><a class="headerlink" href="#cantaloupe.types.BuildResult.workflow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.types.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.types.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/types.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.types.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cantaloupe.types.File" title="cantaloupe.types.File"><code class="xref py py-class docutils literal notranslate"><span class="pre">File</span></code></a></p>
+<p>This class represents a configuration file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.Config.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.Config.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.Config.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.Config.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.Config.path">
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.Config.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.types.File">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.types.</span></span><span class="sig-name descname"><span class="pre">File</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/types.html#File"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.types.File" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.File.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.File.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.File.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.File.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.File.path">
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.File.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.types.GeneratorResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.types.</span></span><span class="sig-name descname"><span class="pre">GeneratorResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files:</span> <span class="pre">'list[File]'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors:</span> <span class="pre">'list[str]'</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/types.html#GeneratorResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.types.GeneratorResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.GeneratorResult.errors">
+<span class="sig-name descname"><span class="pre">errors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.types.GeneratorResult.errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.GeneratorResult.files">
+<span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#cantaloupe.types.File" title="cantaloupe.types.File"><span class="pre">cantaloupe.types.File</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#cantaloupe.types.GeneratorResult.files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="cantaloupe.types.Spec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">cantaloupe.types.</span></span><span class="sig-name descname"><span class="pre">Spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cantaloupe/types.html#Spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cantaloupe.types.Spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cantaloupe.types.File" title="cantaloupe.types.File"><code class="xref py py-class docutils literal notranslate"><span class="pre">File</span></code></a></p>
+<p>This class represents a spec file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.Spec.content">
+<span class="sig-name descname"><span class="pre">content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.Spec.content" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.Spec.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.Spec.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cantaloupe.types.Spec.path">
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#cantaloupe.types.Spec.path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-cantaloupe">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cantaloupe" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">cantaloupe</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cantaloupe package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.commands.html">cantaloupe.commands package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.frameworks.html">cantaloupe.frameworks package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.generation.html">cantaloupe.generation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cantaloupe.utils.html">cantaloupe.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cantaloupe.cli">cantaloupe.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cantaloupe.enums">cantaloupe.enums module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.enums.Action"><code class="docutils literal notranslate"><span class="pre">Action</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.enums.Browser"><code class="docutils literal notranslate"><span class="pre">Browser</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.enums.ScreenshotOpts"><code class="docutils literal notranslate"><span class="pre">ScreenshotOpts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.enums.TraceVideoOpts"><code class="docutils literal notranslate"><span class="pre">TraceVideoOpts</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cantaloupe.loaders">cantaloupe.loaders module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.loaders.load_workflow_context"><code class="docutils literal notranslate"><span class="pre">load_workflow_context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.loaders.load_workflows"><code class="docutils literal notranslate"><span class="pre">load_workflows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cantaloupe.models">cantaloupe.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.models.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.models.ContextAssetConfig"><code class="docutils literal notranslate"><span class="pre">ContextAssetConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.models.ContextTimeoutOpts"><code class="docutils literal notranslate"><span class="pre">ContextTimeoutOpts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.models.Step"><code class="docutils literal notranslate"><span class="pre">Step</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.models.Workflow"><code class="docutils literal notranslate"><span class="pre">Workflow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.models.WorkflowVariable"><code class="docutils literal notranslate"><span class="pre">WorkflowVariable</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cantaloupe.types">cantaloupe.types module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.types.BuildResult"><code class="docutils literal notranslate"><span class="pre">BuildResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.types.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.types.File"><code class="docutils literal notranslate"><span class="pre">File</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.types.GeneratorResult"><code class="docutils literal notranslate"><span class="pre">GeneratorResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantaloupe.types.Spec"><code class="docutils literal notranslate"><span class="pre">Spec</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-cantaloupe">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">src</a></li>
+      <li>Next: <a href="cantaloupe.commands.html" title="next chapter">cantaloupe.commands package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Lemuel Boyce.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/cantaloupe.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

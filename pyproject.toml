@@ -4,10 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["Lemi Boyce <lemuelboyce@gmail.com>"]
 readme = "README.md"
-packages = [{include = "src"}]
+packages = [{ include = "src" }]
 
 [tool.poetry.scripts]
-auto = "main:entry"
+cantaloupe = "main:entry"
 
 [tool.poetry.dependencies]
 python = "^3.9"

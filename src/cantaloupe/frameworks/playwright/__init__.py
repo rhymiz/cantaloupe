@@ -35,35 +35,39 @@ class PlaywrightJSPlugin:
         return tpl.render(context)
 
     @hookimpl
-    def cantaloupe_build_spec(self, context: "Context", workflow: "Workflow", steps: list[str]) -> Spec:
-        tpl = get_template_from_fs("spec.txt")
-        filename = f"{slugify(workflow.name, separator='-')}.spec.js"
-        return Spec(
-            name=filename,
-            path=os.path.join(context.output_dir / "tests", filename),
-            content=tpl.render(
-                {
-                    "name": workflow.name,
-                    "steps": steps,
-                }
-            ),
+    def cantaloupe_build_spec(
+        self,
+        context: "Context",
+        workflow: "Workflow",
+        steps: list[str],
+    ) -> Spec:
+        """
+        This hook is called to build the Spec for a workflow.
+
+        :param context: build context of the current run
+        :param workflow: workflow to build
+        :param steps: list of steps to include in the spec
+        :return: The generated spec
+        """
+        content = get_template_from_fs("spec.txt").render(
+            {
+                "name": workflow.name,
+                "steps": steps,
+            }
         )
+        filename = f"{slugify(workflow.name, separator='-')}.spec.js"
+        filepath = os.path.join(context.output_dir / "tests", filename)
+        return Spec(name=filename, path=filepath, content=content)
 
     @hookimpl
     def cantaloupe_build_config_files(self, context: "Context") -> list[Config]:
+        """
+        This hook is called to build the config files for run.
+
+        :param context: build context of the current run
+        :return: The generated config files
+        """
         filename = "playwright.config.js"
-        return [
-            Config(
-                name=filename,
-                path=os.path.join(context.output_dir, filename),
-                content=get_template_from_fs("playwright.config.txt").render(context=context),
-            )
-        ]
-
-    @hookimpl
-    def cantaloupe_setup(self, context: "Context") -> None:
-        pass
-
-    @hookimpl
-    def cantaloupe_teardown(self, context: "Context") -> None:
-        pass
+        content = get_template_from_fs("playwright.config.txt").render(context=context)
+        filepath = os.path.join(context.output_dir, filename)
+        return [Config(name=filename, path=filepath, content=content)]
