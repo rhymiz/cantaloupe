@@ -12,8 +12,8 @@ import sys
 sys.path.insert(0, os.path.abspath("../src"))
 
 project = "cantaloupe"
-copyright = "2023, Author"
-author = "Author"
+copyright = "2023, Lemuel Boyce"
+author = "Lemuel Boyce"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
