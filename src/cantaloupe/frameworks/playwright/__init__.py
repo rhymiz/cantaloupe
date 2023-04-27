@@ -4,10 +4,10 @@ import typing
 
 from slugify import slugify
 
+from ...types import Config, Spec
+from ..hookspec import hookimpl
 from .template import get_template_from_fs, get_template_from_string
 from .translate import translate_to_playwright
-from ..hookspec import hookimpl
-from ...types import Config, Spec
 
 if typing.TYPE_CHECKING:
     from ...models import Context, Step, Workflow

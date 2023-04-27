@@ -31,7 +31,7 @@ class CodeGenerator:
         generates the code for all given workflows
         """
 
-        plugin_manager.hook.cantaloupe_setup(context=self._context)
+        plugin_manager.hook.cantaloupe_setup(context=self._context)  # type: ignore
 
         files: list[File] = []
         file_names: list[str] = []
@@ -40,7 +40,7 @@ class CodeGenerator:
             workflow = workflow[0] if len(workflow) > 0 else raw_workflow
 
             steps = self.generate_steps(workflow)
-            spec_result = plugin_manager.hook.cantaloupe_build_spec(
+            spec_result = plugin_manager.hook.cantaloupe_build_spec(  # type: ignore
                 context=self._context,
                 workflow=workflow,
                 steps=steps,
@@ -55,16 +55,16 @@ class CodeGenerator:
 
             file_names.append(spec.name)
 
-            workflow_complete = plugin_manager.hook.cantaloupe_workflow_build_complete(
+            workflow_complete = plugin_manager.hook.cantaloupe_workflow_build_complete(  # type: ignore
                 result=BuildResult(workflow=workflow, spec=spec)
             )
             spec = workflow_complete[0].spec if len(workflow_complete) > 0 else spec
             files.append(spec)
 
-        config_files = plugin_manager.hook.cantaloupe_build_config_files(context=self._context)
+        config_files = plugin_manager.hook.cantaloupe_build_config_files(context=self._context)  # type: ignore
         if len(config_files) > 0:
             files.extend(config_files[0])
-        plugin_manager.hook.cantaloupe_teardown(context=self._context)
+        plugin_manager.hook.cantaloupe_teardown(context=self._context)  # type: ignore
         return GeneratorResult(files=files, errors=self._reported_errors)
 
     def import_workflow(self, step: "Step") -> "Workflow":
@@ -107,7 +107,7 @@ class CodeGenerator:
         """
         generates one or many lines of code for a given step
         """
-        result = plugin_manager.hook.cantaloupe_render_step(step=step)
+        result = plugin_manager.hook.cantaloupe_render_step(step=step)  # type: ignore
         return result[0] if len(result) > 0 else None
 
     def _report_error(self, hook_name: str, entity: Any) -> None:

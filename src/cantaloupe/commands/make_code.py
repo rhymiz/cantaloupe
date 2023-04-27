@@ -22,7 +22,7 @@ _TYPE_DIR = click.Path(file_okay=False, dir_okay=True, resolve_path=True)
 @click.command()
 @click.argument("workflow-path", required=True, type=_TYPE_DIR)
 @click.option("--output", type=_TYPE_DIR, default="generated", required=False)
-def make_code(workflow_path: pathlib.Path, output: pathlib.Path):
+def make_code(workflow_path: pathlib.Path, output: pathlib.Path) -> None:
     output = pathlib.Path(output)
     workflow_path = pathlib.Path(workflow_path)
     if not workflow_path.exists():
