@@ -10,9 +10,9 @@ def test_load_workflow_context() -> None:
     workflow_path = Path(__file__).parent / "workflows"
     context_data = load_context(workflow_path)
     assert context_data is not None
-    assert context_data["browser"] == "chromium"
-    assert context_data["headless"] is True
-    assert context_data["base_url"] == "https://www.google.com"
+    assert context_data.browser == "chromium"
+    assert context_data.headless is True
+    assert context_data.base_url == "https://www.google.com"
 
 
 def test_load_workflows() -> None:
