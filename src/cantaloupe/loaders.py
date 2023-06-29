@@ -11,7 +11,7 @@ from .models import Workflow
 
 def load_workflows(workflows: Path) -> Iterable[Workflow]:
     """
-    loads all workflows from a given directory.
+    loads all workflows from a given path.
 
     :param workflows: Path containing workflows
     :return: iterable of workflows
@@ -24,7 +24,7 @@ def load_workflows(workflows: Path) -> Iterable[Workflow]:
             yield Workflow(**yaml.safe_load(workflow.read_text()), file_name=workflow.name)
 
 
-def load_workflow_context(workflows: Path) -> dict[str, Any] | None:
+def load_context(workflows: Path) -> dict[str, Any] | None:
     """
     loads the context file from a given directory.
 

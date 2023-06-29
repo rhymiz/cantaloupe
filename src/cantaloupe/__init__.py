@@ -1,1 +1,5 @@
-from .types import BuildResult, Config, GeneratorResult, Spec
+import pluggy
+
+hookimpl = pluggy.HookimplMarker("cantaloupe")
+
+__all__ = ["hookimpl"]

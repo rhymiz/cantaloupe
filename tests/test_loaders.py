@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from cantaloupe.loaders import load_workflow_context, load_workflows
+from cantaloupe.loaders import load_context, load_workflows
 
 
 def test_load_workflow_context() -> None:
@@ -8,7 +8,7 @@ def test_load_workflow_context() -> None:
     Test that workflow context is loaded correctly
     """
     workflow_path = Path(__file__).parent / "workflows"
-    context_data = load_workflow_context(workflow_path)
+    context_data = load_context(workflow_path)
     assert context_data is not None
     assert context_data["browser"] == "chromium"
     assert context_data["headless"] is True

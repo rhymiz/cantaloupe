@@ -1,2 +1,0 @@
-{%- from 'macros/generic_action.txt' import generic_action -%}
-{{ generic_action("waitForSelector", selector, selector_options) }}

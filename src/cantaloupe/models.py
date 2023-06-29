@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Iterable, List, Union
+from typing import Any, Iterable, Union
 
 from pydantic import BaseModel, Field
 
@@ -13,14 +13,20 @@ class Step(BaseModel):
     A step in a workflow.
 
     Describes an action to be taken during workflow execution.
+
+    Example:
+    -   use: "login"
+        action: "click"
+        config:
+            selector: "#login-button"
+            selector_options:
+                timeout: 10000
+
     """
 
     use: Union[str, None] = Field(default=None)
-    input: str = Field(default=None)
-    input_options: Union[dict[str, Any], List[Any]] = Field(default_factory=dict)
+    config: dict[str, Any] = Field(default_factory=dict)
     action: Action
-    selector: str = Field(default=None)
-    selector_options: dict[str, Any] = Field(default_factory=dict)
     template: str = Field(default=None)
     variables: dict[str, Any] = Field(default_factory=dict)
 
@@ -41,7 +47,7 @@ class Workflow(BaseModel):
     variables: list[WorkflowVariable] = Field(default=[])
 
 
-class ContextAssetConfig(BaseModel):
+class ContextAssetOpts(BaseModel):
     trace: TraceVideoOpts = Field(default=TraceVideoOpts.OFF)
     video: TraceVideoOpts = Field(default=TraceVideoOpts.ON)
     screenshot: ScreenshotOpts = Field(default=ScreenshotOpts.ON_FAILURE)
@@ -56,7 +62,7 @@ class ContextTimeoutOpts(BaseModel):
 
 
 class Context(BaseModel):
-    assets: ContextAssetConfig = Field(default_factory=ContextAssetConfig)
+    assets: ContextAssetOpts = Field(default_factory=ContextAssetOpts)
     browser: Browser = Field(default=Browser.CHROMIUM)
     retries: int = Field(default=0)
     timeouts: ContextTimeoutOpts = Field(default_factory=ContextTimeoutOpts)

@@ -1,7 +1,8 @@
 from pathlib import Path
 
 from cantaloupe.generation.generator import CodeGenerator
-from cantaloupe.loaders import load_workflow_context
+
+from cantaloupe.loaders import load_context
 from cantaloupe.models import Context
 
 
@@ -10,7 +11,7 @@ def test_generate_playwright_config_file() -> None:
     Test that the code generator can translate a workflow to code
     """
     workflow_path = Path(__file__).parent.parent / "workflows"
-    context_data = load_workflow_context(workflow_path)
+    context_data = load_context(workflow_path)
     assert context_data is not None
     context = Context(**context_data, workflows=[], output_dir=Path(), workflow_dir=workflow_path)
     generator = CodeGenerator(context)

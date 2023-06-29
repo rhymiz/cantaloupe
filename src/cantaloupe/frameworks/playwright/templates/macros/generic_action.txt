@@ -1,7 +1,0 @@
-{%- macro generic_action(action, input=None, input_options=None) -%}
-{%- if input -%}
-  await page.{{ action }}({{ input }}, {{ input_options }});
-{%- else -%}
-  await page.{{ action }}({{ input_options }});
-{%- endif -%}
-{%- endmacro -%}

@@ -6,7 +6,7 @@ The browser automation framework for developers.
 
 ### Requirements
 
-* Python >= 3.9
+* Python >= 3.10
 * [Node.js](https://nodejs.org/en/) >= 14.0.0
 * [Poetry](https://python-poetry.org/docs/#installation)
 
@@ -92,7 +92,7 @@ from pathlib import Path
 
 from slugify import slugify
 
-from cantaloupe.frameworks.hookspec import hookimpl
+from cantaloupe.plugins.hookspec import hookimpl
 from cantaloupe.models import Step
 from cantaloupe.types import Spec
 
