@@ -8,7 +8,6 @@ import pluggy
 
 from . import hookspecs
 from .loaders import load_context, load_workflows
-from .models import Context
 from .plugins import default
 
 logging.basicConfig(
@@ -18,10 +17,7 @@ logging.basicConfig(
 
 logger = logging.getLogger("cantaloupe")
 
-parser = argparse.ArgumentParser(
-    prog="cantaloupe",
-    description="Cantaloupe is a tool for automating web applications."
-)
+parser = argparse.ArgumentParser(prog="cantaloupe", description="Cantaloupe is a tool for automating web applications.")
 
 
 @dataclass(frozen=True)
@@ -46,29 +42,26 @@ def _make_path(workflow_path: PosixPath) -> Path:
     return workflows
 
 
-def main():
+def main(args):
     """
     Main entry point for the cantaloupe CLI.
 
-    :return:
-    :rtype:
     """
 
     manager = get_plugin_manager()
     manager.hook.cantaloupe_addoption(parser=parser)
 
-    args = parser.parse_args()
-    config = CantaloupeConfig(option=args)
+    parsed_args = parser.parse_args(args)
 
-    workflow_directory = _make_path(args.workflows)
+    config = CantaloupeConfig(option=parsed_args)
+    workflow_directory = _make_path(parsed_args.workflows)
 
-    context_data = load_context(workflows=workflow_directory)
-    if context_data is None:
+    context = load_context(workflows=workflow_directory)
+    if context is None:
         logger.error("No context file found.")
         return
 
-    context_data["workflows"] = list(load_workflows(workflows=workflow_directory))
-    context = Context(**context_data)
+    context.workflows = list(load_workflows(workflows=workflow_directory))
 
     manager.hook.cantaloupe_setup(config=config, context=context)
 
@@ -81,6 +74,6 @@ def get_plugin_manager() -> pluggy.PluginManager:
     """
     manager = pluggy.PluginManager("cantaloupe")
     manager.add_hookspecs(hookspecs)
-    manager.register(default, name="cantaloupe-core")
     manager.load_setuptools_entrypoints("cantaloupe_plugin")
+    manager.register(default, name="cantaloupe-core")
     return manager

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any, Iterable, Union
+from typing import Any, Iterable
 
 from pydantic import BaseModel, Field
 
@@ -9,22 +9,9 @@ from .enums import Action, Browser, ScreenshotOpts, TraceVideoOpts
 
 
 class Step(BaseModel):
-    """
-    A step in a workflow.
+    """Defines an action to be taken as part of a workflow."""
 
-    Describes an action to be taken during workflow execution.
-
-    Example:
-    -   use: "login"
-        action: "click"
-        config:
-            selector: "#login-button"
-            selector_options:
-                timeout: 10000
-
-    """
-
-    use: Union[str, None] = Field(default=None)
+    use: str | None = Field(default=None)
     config: dict[str, Any] = Field(default_factory=dict)
     action: Action
     template: str = Field(default=None)
@@ -37,13 +24,14 @@ class Step(BaseModel):
 class WorkflowVariable(BaseModel):
     name: str
     default: Any = Field(default=None)
-    description: str = Field(default=None)
+    description: str | None = Field(default=None)
 
 
 class Workflow(BaseModel):
-    name: str = Field(max_length=55)
+    name: str
     steps: list[Step]
-    file_name: str = Field(default=None)
+    file_name: str
+    file_path: Path
     variables: list[WorkflowVariable] = Field(default=[])
 
 

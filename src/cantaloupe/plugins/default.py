@@ -4,7 +4,7 @@ from pathlib import Path
 from .. import hookimpl
 
 
-@hookimpl
+@hookimpl(tryfirst=True)
 def cantaloupe_addoption(parser):
     """
     Called to add arguments to the parser.
@@ -20,7 +20,7 @@ def cantaloupe_addoption(parser):
         "--workflows",
         type=lambda p: Path(p).absolute(),
         help="Path to the workflows directory.",
-        required=True
+        required=True,
     )
     parser.add_argument(
         "-c",
@@ -35,4 +35,3 @@ def cantaloupe_addoption(parser):
         action="version",
         version="%(prog)s {}".format(version("cantaloupe")),
     )
-    return parser
