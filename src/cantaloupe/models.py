@@ -14,7 +14,6 @@ class Step(BaseModel):
     use: str | None = Field(default=None)
     config: dict[str, Any] = Field(default_factory=dict)
     action: Action
-    template: str = Field(default=None)
     variables: dict[str, Any] = Field(default_factory=dict)
 
     class Config:
@@ -23,8 +22,9 @@ class Step(BaseModel):
 
 class WorkflowVariable(BaseModel):
     name: str
+    type: str = Field(default="string")
     default: Any = Field(default=None)
-    description: str | None = Field(default=None)
+    required: bool = Field(default=False)
 
 
 class Workflow(BaseModel):
@@ -32,7 +32,7 @@ class Workflow(BaseModel):
     steps: list[Step]
     file_name: str
     file_path: Path
-    variables: list[WorkflowVariable] = Field(default=[])
+    variables: list[WorkflowVariable] = Field(default_factory=list)
 
 
 class ContextAssetOpts(BaseModel):

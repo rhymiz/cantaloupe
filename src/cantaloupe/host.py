@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path, PosixPath
 
 import pluggy
+from pydantic import Field
 
 from . import hookspecs
 from .loaders import load_context, load_workflows
@@ -27,6 +28,7 @@ class CantaloupeConfig:
     """
 
     option: argparse.Namespace
+    workflow_directory: Path = Field(default=None)
 
     def has_option(self, option: str) -> bool:
         return option in self.option
@@ -53,8 +55,11 @@ def main(args):
 
     parsed_args = parser.parse_args(args)
 
-    config = CantaloupeConfig(option=parsed_args)
     workflow_directory = _make_path(parsed_args.workflows)
+    config = CantaloupeConfig(
+        option=parsed_args,
+        workflow_directory=workflow_directory,
+    )
 
     context = load_context(workflows=workflow_directory)
     if context is None:

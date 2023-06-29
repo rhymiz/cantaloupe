@@ -1,22 +1,21 @@
-name: "Facebook Login"
+name: "Login with Facebook"
 variables:
   - name: "email"
-    description: "Email address"
+    type: "string"
   - name: "password"
-    description: "Password"
-description: "Logs into Facebook"
+    type: "string"
 steps:
   - action: go
-    input: https://www.facebook.com
+    config:
+      url: "https://www.facebook.com/"
   - action: click
-    selector: "input[name='email']"
+    config:
+      selector: "a[href='/login']"
   - action: type
-    selector: "input[name='email']"
-    input: "{{email}}"
-  - action: click
-    selector: "input[name='pass']"
+    config:
+      selector: "input[name='email']"
+      text: "{{variables.email}}"
   - action: type
-    selector: "input[name='pass']"
-    input: "{{password}}"
-  - action: click
-    selector: "input[value='Log In']"
+    config:
+      selector: "input[name='pass']"
+      text: "{{variables.password}}"

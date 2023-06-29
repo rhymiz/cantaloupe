@@ -6,7 +6,5 @@ steps:
       email: "demo@elmi.com"
       password: "demo"
   - action: type
-    selector: "input[name='q']"
-    input: "https://jsonplaceholder.typicode.com/todos/1"
-  - action: wait_for_url
-    input: "https://jsonplaceholder.typicode.com/todos/1"
+    config:
+      selector: "input[name='q']"

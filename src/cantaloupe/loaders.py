@@ -9,6 +9,25 @@ import yaml
 from .models import Context, Workflow
 
 
+def load_workflow(workflow_path: str) -> Workflow:
+    """
+    Loads a workflow from a given path.
+
+    :param workflow_path: Path to the workflow
+    :return: workflow
+    """
+
+    if not workflow_path.endswith(".yaml"):
+        workflow_path = f"{workflow_path}.yaml"
+
+    with open(workflow_path, "r") as workflow:
+        return Workflow(
+            **yaml.safe_load(Path(workflow_path).read_text()),
+            file_name=workflow.name,
+            file_path=workflow_path,
+        )
+
+
 def load_workflows(workflows: Path) -> Iterable[Workflow]:
     """
     Loads all workflows from a given path.
