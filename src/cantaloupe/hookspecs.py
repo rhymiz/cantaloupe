@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from typing import Any, Callable, TypeVar, cast
 
 import pluggy
@@ -8,7 +9,7 @@ hookspec = cast(Callable[[F], F], pluggy.HookspecMarker("cantaloupe"))
 
 
 @hookspec
-def cantaloupe_addoption(parser):
+def cantaloupe_addoption(parser: ArgumentParser) -> None:
     """
     Called to add arguments to the parser.
 
@@ -23,7 +24,6 @@ def cantaloupe_addoption(parser):
 def cantaloupe_setup(config, context) -> None:
     """
     Called before the build process starts.
-
     """
 
 
@@ -31,5 +31,4 @@ def cantaloupe_setup(config, context) -> None:
 def cantaloupe_teardown(config, context) -> None:
     """
     Called after the build process ends.
-
     """

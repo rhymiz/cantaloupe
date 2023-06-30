@@ -31,7 +31,7 @@ class Workflow(BaseModel):
     name: str
     steps: list[Step]
     file_name: str
-    file_path: Path
+    file_path: Path | str
     variables: list[WorkflowVariable] = Field(default_factory=list)
 
 

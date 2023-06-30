@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
 
 
 @hookimpl(tryfirst=True)
-def cantaloupe_addoption(parser):
+def cantaloupe_addoption(parser) -> None:
     """
     Called to add arguments to the parser.
 
@@ -39,7 +39,6 @@ def cantaloupe_addoption(parser):
         help="Path to an alternate context file.",
         required=False,
     )
-
     parser.add_argument(
         "--version",
         action="version",
@@ -62,7 +61,6 @@ def _hydrate_variables(step) -> Any:
 
     for key, value in step.config.items():
         if "{{" in value and "}}" in value:
-            print({"variables": step.variables})
             step.config[key] = Template(value).render({"variables": step.variables})
         else:
             step.config[key] = value
@@ -71,7 +69,6 @@ def _hydrate_variables(step) -> Any:
 
 @hookimpl(tryfirst=True)
 def cantaloupe_setup(config, context) -> None:
-
     for workflow in context.workflows:
         steps: list["Step"] = []
 
@@ -82,7 +79,7 @@ def cantaloupe_setup(config, context) -> None:
             if not step.use:
                 steps.append(step)
             else:
-                # load the workflow
+                # Load the workflow
                 workflow_ref = load_workflow(os.path.join(config.option.workflows, step.use))
                 if not workflow_ref.variables:
                     for ref_step in workflow_ref.steps:
