@@ -16,7 +16,7 @@ class Step(BaseModel):
     action: Action
     variables: dict[str, Any] = Field(default_factory=dict)
 
-    class Config:
+    class ConfigDict:
         use_enum_values = True
 
 
@@ -26,6 +26,9 @@ class WorkflowVariable(BaseModel):
     default: Any = Field(default=None)
     required: bool = Field(default=False)
 
+    class ConfigDict:
+        use_enum_values = True
+
 
 class Workflow(BaseModel):
     name: str
@@ -34,11 +37,17 @@ class Workflow(BaseModel):
     file_path: Path | str
     variables: list[WorkflowVariable] = Field(default_factory=list)
 
+    class ConfigDict:
+        use_enum_values = True
+
 
 class ContextAssetOpts(BaseModel):
     trace: TraceVideoOpts = Field(default=TraceVideoOpts.OFF)
     video: TraceVideoOpts = Field(default=TraceVideoOpts.ON)
     screenshot: ScreenshotOpts = Field(default=ScreenshotOpts.ON_FAILURE)
+
+    class ConfigDict:
+        use_enum_values = True
 
 
 class ContextTimeoutOpts(BaseModel):
@@ -47,6 +56,9 @@ class ContextTimeoutOpts(BaseModel):
     action_timeout: int = Field(default=60000)  # 1 minute
     expect_timeout: int = Field(default=15000)  # 15 seconds
     navigation_timeout: int = Field(default=15000)  # 15 seconds
+
+    class ConfigDict:
+        use_enum_values = True
 
 
 class Context(BaseModel):
@@ -60,5 +72,5 @@ class Context(BaseModel):
     output_dir: Path = Field(default=None)
     workflow_dir: Path = Field(default=None)
 
-    class Config:
+    class ConfigDict:
         use_enum_values = True
