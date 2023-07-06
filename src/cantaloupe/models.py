@@ -69,8 +69,6 @@ class Context(BaseModel):
     headless: bool = Field(default=True)
     base_url: str = Field(default=None)
     workflows: Iterable[Workflow] = Field(default_factory=list)
-    output_dir: Path = Field(default=None)
-    workflow_dir: Path = Field(default=None)
 
     class ConfigDict:
         use_enum_values = True

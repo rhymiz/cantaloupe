@@ -44,6 +44,12 @@ def cantaloupe_addoption(parser) -> None:
         action="version",
         version="%(prog)s {}".format(version("cantaloupe")),
     )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable debug mode.",
+        required=False,
+    )
 
 
 def _hydrate_variables(step) -> Any:
