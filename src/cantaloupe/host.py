@@ -10,8 +10,8 @@ from pydantic import Field
 
 from . import hookspecs
 from .loaders import load_context, load_workflows
-from .logger import get_logger
-from .plugins import core
+from .logger import get_root_logger
+from .plugins import core_error_handling, core_framework
 
 parser = argparse.ArgumentParser(prog="cantaloupe", description="Cantaloupe is a tool for automating web applications.")
 
@@ -27,6 +27,14 @@ class Config:
 
     def has_option(self, option: str) -> bool:
         return option in self.option
+
+    def get_log_level(self) -> int:
+        """
+        Returns the log level.
+        """
+        if self.option.debug:
+            return logging.DEBUG
+        return logging.INFO
 
 
 @dataclass(frozen=True)
@@ -63,12 +71,7 @@ def main(args: tuple[Any]) -> None:
     workflow_dir = _make_path(parsed.workflows)
     config = Config(option=parsed, workflow_dir=workflow_dir)
 
-    root_logger_name = "cantaloupe"
-    if config.has_option("debug") and config.option.debug:
-        logger = get_logger(root_logger_name, level=logging.DEBUG)
-        manager.enable_tracing()
-    else:
-        logger = get_logger(root_logger_name)
+    logger = get_root_logger(level=config.get_log_level())
 
     context = load_context(workflows=workflow_dir)
     if context is None:
@@ -108,5 +111,6 @@ def get_plugin_manager() -> pluggy.PluginManager:
     manager = pluggy.PluginManager("cantaloupe")
     manager.add_hookspecs(hookspecs)
     manager.load_setuptools_entrypoints("cantaloupe_plugin")
-    manager.register(core)
+    manager.register(core_framework)
+    manager.register(core_error_handling)
     return manager

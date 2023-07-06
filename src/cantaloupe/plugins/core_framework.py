@@ -8,6 +8,7 @@ from jinja2 import Template
 
 from .. import hookimpl
 from ..enums import Action
+from ..errors import InvalidWorkflowStep
 from ..loaders import load_workflow
 
 if typing.TYPE_CHECKING:
@@ -50,6 +51,12 @@ def cantaloupe_addoption(parser) -> None:
         help="Enable debug mode.",
         required=False,
     )
+    parser.add_argument(
+        "--failfast",
+        action="store_true",
+        help="Stop on first failure.",
+        required=False,
+    )
 
 
 def _hydrate_variables(step) -> Any:
@@ -78,9 +85,10 @@ def cantaloupe_setup(config, context) -> None:
     for workflow in context.workflows:
         steps: list["Step"] = []
 
-        for step in workflow.steps:
-            if step.action == Action.IMPORT and not step.use:
-                raise ValueError("Import step must have a 'use' attribute.")
+        for index, step in enumerate(workflow.steps, start=1):
+            step_invalid = step.action == Action.IMPORT and step.use is None
+            if step_invalid:
+                raise InvalidWorkflowStep(f"Step {index} in workflow '{workflow.name}' does not have a 'use' key.")
 
             if not step.use:
                 steps.append(step)
