@@ -82,25 +82,20 @@ def main(args: tuple[Any]) -> None:
     logger.debug("Loading workflows from %s", workflow_dir)
     context.workflows = list(load_workflows(workflows=workflow_dir))
 
-    logger.debug("calling setup hooks")
+    logger.debug("Found %s workflow(s)", len(context.workflows))
+
+    logger.debug("Calling setup hooks")
     manager.hook.cantaloupe_setup(config=config, context=context)
 
     for workflow in context.workflows:
-        logger.debug("building workflow: %s", workflow.name)
-        build_result = manager.hook.cantaloupe_build_workflow(
+        logger.debug("Building workflow: %s", workflow.name)
+        manager.hook.cantaloupe_build_workflow(
             config=config,
             context=context,
             workflow=workflow,
         )
 
-        manager.hook.cantaloupe_build_workflow_result(
-            config=config,
-            context=context,
-            workflow=workflow,
-            build_result=build_result,
-        )
-
-    logger.debug("calling teardown hooks")
+    logger.debug("Calling teardown hooks")
     manager.hook.cantaloupe_teardown(config=config, context=context)
 
 
