@@ -5,7 +5,7 @@ variables:
   - name: "password"
     type: "string"
 steps:
-  - action: go
+  - action: goto
     config:
       url: "https://www.facebook.com/"
   - action: click

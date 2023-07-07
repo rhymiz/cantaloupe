@@ -35,13 +35,6 @@ def cantaloupe_build_workflow(config, context, workflow) -> None:
 
 
 @hookspec
-def cantaloupe_build_workflow_result(config, context, workflow, build_result) -> None:
-    """
-    Called after the build process for each workflow.
-    """
-
-
-@hookspec
 def cantaloupe_teardown(config, context) -> None:
     """
     Called after the build process ends.

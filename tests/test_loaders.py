@@ -24,7 +24,7 @@ def test_load_workflows() -> None:
     assert len(workflows) == 1
     workflow = workflows[0]
     assert workflow.name == "Google Search"
-    assert workflow.steps[0].action == "go"
+    assert workflow.steps[0].action == "goto"
 
 
 def test_load_workflows_with_invalid_yaml() -> None:

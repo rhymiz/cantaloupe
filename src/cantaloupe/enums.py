@@ -7,10 +7,9 @@ class Action(str, enum.Enum):
     currently supported by the DSL.
     """
 
-    GO = "go"
+    GOTO = "goto"
     CODE = "code"
     TYPE = "type"
-    BACK = "back"
     CLEAR = "clear"
     PRESS = "press"
     FOCUS = "focus"
@@ -19,16 +18,12 @@ class Action(str, enum.Enum):
     RELOAD = "reload"
     SELECT = "select"
     IMPORT = "import"
-    FORWARD = "forward"
-    SCREENSHOT = "screenshot"
-    GET_BY_TEXT = "get_by_text"
-    GET_BY_ROLE = "get_by_role"
-    GET_BY_TITLE = "get_by_title"
-    GET_BY_LABEL = "get_by_label"
+    GO_BACK = "go_back"
+    GO_FORWARD = "go_forward"
     WAIT_FOR_URL = "wait_for_url"
-    GET_BY_TEST_ID = "get_by_test_id"
-    GET_BY_ALT_TEXT = "get_by_alt_text"
-    GET_BY_PLACEHOLDER = "get_by_placeholder"
+    TAKE_SCREENSHOT = "take_screenshot"
+    WAIT_FOR_ELEMENT = "wait_for_element"
+    WAIT_FOR_NAVIGATION = "wait_for_navigation"
 
 
 class Browser(str, enum.Enum):

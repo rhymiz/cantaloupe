@@ -1,62 +1,15 @@
 import os
 import typing
-from importlib.metadata import version
-from pathlib import Path
 from typing import Any
 
 from jinja2 import Template
 
+from ._core_framework_validators import _validate_imports
 from .. import hookimpl
-from ..enums import Action
-from ..errors import InvalidWorkflowStep
 from ..loaders import load_workflow
 
 if typing.TYPE_CHECKING:
     from ..models import Step
-
-
-@hookimpl(tryfirst=True)
-def cantaloupe_addoption(parser) -> None:
-    """
-    Called to add arguments to the parser.
-
-    :param parser: the parser to add arguments to
-    :type parser: argparse.ArgumentParser
-    :return:
-    :rtype:
-    """
-
-    parser.add_argument(
-        "-w",
-        "--workflows",
-        type=lambda p: Path(p).absolute(),
-        help="Path to the workflows directory.",
-        required=True,
-    )
-    parser.add_argument(
-        "-c",
-        "--context",
-        type=lambda p: Path(p).absolute(),
-        help="Path to an alternate context file.",
-        required=False,
-    )
-    parser.add_argument(
-        "--version",
-        action="version",
-        version="%(prog)s {}".format(version("cantaloupe")),
-    )
-    parser.add_argument(
-        "--debug",
-        action="store_true",
-        help="Enable debug mode.",
-        required=False,
-    )
-    parser.add_argument(
-        "--failfast",
-        action="store_true",
-        help="Stop on first failure.",
-        required=False,
-    )
 
 
 def _hydrate_variables(step) -> Any:
@@ -81,39 +34,36 @@ def _hydrate_variables(step) -> Any:
 
 
 @hookimpl(tryfirst=True)
-def cantaloupe_setup(config, context) -> None:
-    for workflow in context.workflows:
-        steps: list["Step"] = []
+def cantaloupe_build_workflow(config, workflow) -> None:
+    steps: list["Step"] = []
+    for index, step in enumerate(workflow.steps, start=1):
+        _validate_imports(index, step, workflow)
 
-        for index, step in enumerate(workflow.steps, start=1):
-            step_invalid = step.action == Action.IMPORT and step.use is None
-            if step_invalid:
-                raise InvalidWorkflowStep(f"Step {index} in workflow '{workflow.name}' does not have a 'use' key.")
-
-            if not step.use:
-                steps.append(step)
+        if not step.use:
+            steps.append(step)
+        else:
+            # Load the workflow
+            imported_workflow = load_workflow(os.path.join(config.option.workflows, step.use))
+            if not imported_workflow.variables:
+                # merge imported workflow steps into current workflow
+                for imported_steps in imported_workflow.steps:
+                    steps.append(imported_steps)
             else:
-                # Load the workflow
-                workflow_ref = load_workflow(os.path.join(config.option.workflows, step.use))
-                if not workflow_ref.variables:
-                    for ref_step in workflow_ref.steps:
-                        steps.append(ref_step)
-                else:
-                    for wf_var in workflow_ref.variables:
-                        # check if all required variables are set
-                        if wf_var.required and wf_var.name not in step.variables:
-                            raise KeyError(f"Variable {wf_var} is required by the workflow {step.use} but not set.")
+                for var in imported_workflow.variables:
+                    # check if all required variables are set
+                    if var.required and var.name not in step.variables:
+                        raise KeyError(f"Variable {var} is required by the workflow {step.use} but not set.")
 
-                        # if variable not provided by step and workflow has default value, use default value
-                        if wf_var.name not in step.variables:
-                            if wf_var.default:
-                                step.variables[wf_var.name] = wf_var.default
-                            else:
-                                step.variables[wf_var.name] = None
+                    # if variable not provided by step and workflow has default value, use default value
+                    if var.name not in step.variables:
+                        if var.default:
+                            step.variables[var.name] = var.default
+                        else:
+                            step.variables[var.name] = None
 
-                    for wf_step in workflow_ref.steps:
-                        wf_step.variables = step.variables
-                        steps.append(wf_step)
+                for wf_step in imported_workflow.steps:
+                    wf_step.variables = step.variables
+                    steps.append(wf_step)
 
-        # hydrate variables with env prefixes
-        workflow.steps = [_hydrate_variables(step) for step in steps]
+    # hydrate variables with env prefixes
+    workflow.steps = [_hydrate_variables(step) for step in steps]

@@ -1,6 +1,6 @@
 name: "Google Search"
 steps:
-  - action: go
+  - action: goto
     input: "https://www.google.com"
   - action: type
     selector: "input[name='q']"

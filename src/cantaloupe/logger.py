@@ -2,7 +2,7 @@ import logging
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(name)s [%(levelname)s] - %(message)s",
+    format="%(message)s",
 )
 
 _root_logger: logging.Logger | None = None
