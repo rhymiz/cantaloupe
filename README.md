@@ -2,6 +2,8 @@
 
 An extensible framework for building browser automations.
 
+> #### Note: This library is still very much WIP 🧪. This means that breaking changes can be introduced at any point in time.
+
 ## Getting Started
 
 ### Installation
