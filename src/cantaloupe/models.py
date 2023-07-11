@@ -2,29 +2,30 @@ from __future__ import annotations
 
 import argparse
 import logging
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
 import pluggy
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from .enums import Action, Browser, ScreenshotOpts, TraceVideoOpts
 
 
-@dataclass(frozen=True)
-class Config:
+class Config(BaseModel):
     """
-    This class represents a configuration file.
+    This class represents a immutable configuration file.
     """
 
     option: argparse.Namespace
+    dry_run: bool = Field(default=False)
+    workflow_dir: Path
     pluginmanager: pluggy.PluginManager
-    workflow_dir: Path | None = Field(default=None)
 
-    class ConfigDict:
-        use_enum_values = True
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        frozen=True,
+        use_enum_values=True,
+        arbitrary_types_allowed=True,
+    )
 
     def get_log_level(self) -> int:
         """
@@ -64,8 +65,9 @@ class Workflow(BaseModel):
     file_path: Path | str
     variables: list[WorkflowVariable] = Field(default_factory=list)
 
-    class ConfigDict:
-        use_enum_values = True
+    model_config = ConfigDict(
+        use_enum_values=True,
+    )
 
 
 class ContextAssetOpts(BaseModel):
@@ -73,8 +75,9 @@ class ContextAssetOpts(BaseModel):
     video: TraceVideoOpts = Field(default=TraceVideoOpts.ON)
     screenshot: ScreenshotOpts = Field(default=ScreenshotOpts.ON_FAILURE)
 
-    class ConfigDict:
-        use_enum_values = True
+    model_config = ConfigDict(
+        use_enum_values=True,
+    )
 
 
 class ContextTimeoutOpts(BaseModel):
@@ -84,8 +87,9 @@ class ContextTimeoutOpts(BaseModel):
     expect_timeout: int = Field(default=15000)  # 15 seconds
     navigation_timeout: int = Field(default=15000)  # 15 seconds
 
-    class ConfigDict:
-        use_enum_values = True
+    model_config = ConfigDict(
+        use_enum_values=True,
+    )
 
 
 class Context(BaseModel):
@@ -97,5 +101,6 @@ class Context(BaseModel):
     base_url: str = Field(default=None)
     workflows: Iterable[Workflow] = Field(default_factory=list)
 
-    class ConfigDict:
-        use_enum_values = True
+    model_config = ConfigDict(
+        use_enum_values=True,
+    )

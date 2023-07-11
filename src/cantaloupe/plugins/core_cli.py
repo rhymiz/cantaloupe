@@ -47,3 +47,9 @@ def cantaloupe_addoption(parser) -> None:
         help="Stop on first failure.",
         required=False,
     )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Dry run mode.",
+        required=False,
+    )

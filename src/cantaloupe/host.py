@@ -18,7 +18,7 @@ if typing.TYPE_CHECKING:
 
 parser = argparse.ArgumentParser(
     prog="cantaloupe",
-    description="Cantaloupe is a tool for automating web applications.",
+    description="An extensible framework for building browser automations.",
 )
 
 
@@ -70,20 +70,24 @@ def main(args: list[Any]) -> None:
 
     manager = get_plugin_manager()
 
-    # Add all plugin options to parser
+    # collect all the options from plugins
     manager.hook.cantaloupe_addoption(parser=parser)
 
     opts = parser.parse_args(args)
     config = Config(
         option=opts,
+        dry_run=opts.dry_run,
         workflow_dir=_make_path(opts.workflows),
         pluginmanager=manager,
     )
 
     logger = get_root_logger(level=config.get_log_level())
+    if config.dry_run:
+        logger.info("Running in dry-run mode...")
+
     context = load_context(workflows=config.workflow_dir)
     if context is None:
-        logger.error("No context file found.")
+        logger.error("No context file found...")
         return
 
     cantaloupe = Cantaloupe(manager.hook, logger)
