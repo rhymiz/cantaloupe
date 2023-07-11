@@ -105,7 +105,7 @@ def get_plugin_manager() -> pluggy.PluginManager:
     """
     manager = pluggy.PluginManager("cantaloupe")
     manager.add_hookspecs(hookspecs)
-    manager.load_setuptools_entrypoints("cantaloupe_plugin")
+    manager.load_setuptools_entrypoints("cantaloupe")
     manager.register(core_framework)
     manager.register(core_error_handling)
     manager.register(core_cli)
