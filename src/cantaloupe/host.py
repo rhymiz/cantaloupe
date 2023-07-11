@@ -63,7 +63,7 @@ class Cantaloupe:
             )
 
 
-def main(args: tuple[Any]) -> None:
+def main(args: list[Any]) -> None:
     """
     Main entry point for the Cantaloupe CLI.
     """
