@@ -29,4 +29,4 @@ $ poetry run cantaloupe --help
 ### Creating plugins
 
 Plugins are created by implementing the cantaloupe hookspec. 
-See [cantaloupe/hookspecs.py](cantaloupe/hookspecs.py) for the hookspecs.
+See [cantaloupe/hookspecs.py](src/cantaloupe/hookspecs.py) for the hookspecs.
