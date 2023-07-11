@@ -39,7 +39,11 @@ def load_workflows(workflows: Path) -> Iterable[Workflow]:
     """
     for workflow in workflows.glob("*.yaml"):
         if workflow.is_file() and workflow.name.startswith("workflow_"):
-            yield Workflow(**yaml.safe_load(workflow.read_text()), file_name=workflow.name, file_path=workflow)
+            yield Workflow(
+                **yaml.safe_load(workflow.read_text()),
+                file_name=workflow.name,
+                file_path=workflow,
+            )
 
 
 def load_context(workflows: Path) -> Context | None:

@@ -20,7 +20,9 @@ def test_load_workflows() -> None:
     Test that workflows are loaded correctly
     """
     workflow_path = Path(__file__).parent / "workflows"
-    workflows = list(load_workflows(workflow_path))  # load_workflows returns a generator
+    workflows = list(
+        load_workflows(workflow_path)
+    )  # load_workflows returns a generator
     assert len(workflows) == 1
     workflow = workflows[0]
     assert workflow.name == "Google Search"
@@ -34,6 +36,8 @@ def test_load_workflows_with_invalid_yaml() -> None:
     workflow_path = Path(__file__).parent / "workflows"
     workflow_file = workflow_path / "invalid.yaml"
     workflow_file.touch()
-    workflows = list(load_workflows(workflow_path))  # load_workflows returns a generator
+    workflows = list(
+        load_workflows(workflow_path)
+    )  # load_workflows returns a generator
     assert len(workflows) == 1
     workflow_file.unlink()

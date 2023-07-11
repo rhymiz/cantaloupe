@@ -23,7 +23,9 @@ def cantaloupe_resolve_step_variables(step: "Step") -> "Step":
 
     for key, value in step.config.items():
         if "{{" in value and "}}" in value:
-            step.config[key] = Template(value).render({"variables": step.variables})
+            step.config[key] = Template(value).render(
+                {"variables": step.variables}
+            )
         else:
             step.config[key] = value
 
@@ -31,7 +33,11 @@ def cantaloupe_resolve_step_variables(step: "Step") -> "Step":
 
 
 @hookimpl
-def cantaloupe_validate_step_imports(index: int, step: "Step", workflow: "Workflow") -> None:
+def cantaloupe_validate_step_imports(
+    index: int,
+    step: "Step",
+    workflow: "Workflow",
+) -> None:
     """
     Validates an import step.
     """
@@ -54,19 +60,27 @@ def cantaloupe_setup(config: "Config", context: "Context") -> None:
         steps: list["Step"] = []
 
         for index, step in enumerate(workflow.steps, start=1):
-            pm.hook.cantaloupe_validate_step_imports(index=index, step=step, workflow=workflow)
+            pm.hook.cantaloupe_validate_step_imports(
+                index=index,
+                step=step,
+                workflow=workflow,
+            )
             if not step.use:
                 steps.append(step)
             else:
                 # Load the workflow referenced in "use" and merge its steps them into the current workflow.
-                imported_workflow = load_workflow(os.path.join(config.option.workflows, step.use))
+                imported_workflow = load_workflow(
+                    os.path.join(config.option.workflows, step.use)
+                )
                 if not imported_workflow.variables:
                     for imported_steps in imported_workflow.steps:
                         steps.append(imported_steps)
                 else:
                     for var in imported_workflow.variables:
                         if var.required and var.name not in step.variables:
-                            raise ValidationError(f"Variable {var} is required by the workflow {step.use} but not set.")
+                            raise ValidationError(
+                                f"Variable {var} is required by the workflow {step.use} but not set."
+                            )
 
                         # use the default value if it exists
                         if (

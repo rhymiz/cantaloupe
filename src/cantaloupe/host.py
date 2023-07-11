@@ -16,7 +16,10 @@ from .plugins import core_cli, core_error_handling, core_framework
 if typing.TYPE_CHECKING:
     from pluggy._hooks import _HookRelay
 
-parser = argparse.ArgumentParser(prog="cantaloupe", description="Cantaloupe is a tool for automating web applications.")
+parser = argparse.ArgumentParser(
+    prog="cantaloupe",
+    description="Cantaloupe is a tool for automating web applications.",
+)
 
 
 def _make_path(workflow_path: PosixPath) -> Path:

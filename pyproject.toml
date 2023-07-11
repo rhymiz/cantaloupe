@@ -27,11 +27,11 @@ sphinx-rtd-theme = "^1.2.0"
 
 [tool.black]
 target-version = ['py39', 'py310', 'py311']
-line-length = 120
+line-length = 79
 
 [tool.isort]
 profile = "black"
-line_length = 120
+line_length = 79
 
 [build-system]
 requires = ["poetry-core"]
