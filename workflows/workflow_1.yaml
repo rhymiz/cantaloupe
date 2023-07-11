@@ -1,6 +1,7 @@
 name: "Google Search"
 steps:
   - action: import
+    use: facebook-login
     variables:
       email: "demo@elmi.com"
       password: "demo"

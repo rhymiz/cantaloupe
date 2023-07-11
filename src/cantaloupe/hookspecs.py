@@ -1,7 +1,11 @@
+import typing
 from argparse import ArgumentParser
 from typing import Any, Callable, TypeVar, cast
 
 import pluggy
+
+if typing.TYPE_CHECKING:
+    from .models import Step, Workflow
 
 F = TypeVar("F", bound=Callable[..., Any])
 
@@ -38,4 +42,19 @@ def cantaloupe_build_workflow(config, context, workflow) -> None:
 def cantaloupe_teardown(config, context) -> None:
     """
     Called after the build process ends.
+    """
+
+
+@hookspec
+def cantaloupe_resolve_step_variables(workflow: "Workflow", step: "Step") -> "Step":
+    """
+    Called to resolve variables for a given step.
+    """
+
+
+@hookspec
+def cantaloupe_validate_step_imports(index: int, step: "Step", workflow: "Workflow") -> None:
+    """
+    Called to validate an import step.
+    Should raise ValidationError if the step is invalid.
     """

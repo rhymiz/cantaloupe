@@ -22,7 +22,7 @@ class InvalidWorkflow(CantaloupeError):
     pass
 
 
-class InvalidWorkflowStep(CantaloupeError):
-    """Raised when there is an error with a workflow step."""
+class ValidationError(CantaloupeError):
+    """Raised when there is an error with a variable."""
 
     pass

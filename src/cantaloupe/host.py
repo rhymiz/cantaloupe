@@ -2,41 +2,21 @@ import argparse
 import logging
 import os
 import typing
-from dataclasses import dataclass
 from pathlib import Path, PosixPath
 from typing import Any
 
 import pluggy
-from pydantic import Field
 
 from . import hookspecs
 from .loaders import load_context, load_workflows
 from .logger import get_root_logger
+from .models import Config
 from .plugins import core_cli, core_error_handling, core_framework
 
 if typing.TYPE_CHECKING:
     from pluggy._hooks import _HookRelay
 
 parser = argparse.ArgumentParser(prog="cantaloupe", description="Cantaloupe is a tool for automating web applications.")
-
-
-@dataclass(frozen=True)
-class Config:
-    """
-    This class represents a configuration file.
-    """
-
-    option: argparse.Namespace
-    workflow_dir: Path = Field(default=None)
-    pluginmanager: pluggy.PluginManager = Field(default=None)
-
-    def get_log_level(self) -> int:
-        """
-        Returns the log level.
-        """
-        if self.option.debug:
-            return logging.DEBUG
-        return logging.INFO
 
 
 def _make_path(workflow_path: PosixPath) -> Path:
@@ -51,7 +31,7 @@ def _make_path(workflow_path: PosixPath) -> Path:
     return workflows
 
 
-class _Cantaloupe:
+class Cantaloupe:
     def __init__(self, relay: "_HookRelay", logger: logging.Logger) -> None:
         self.relay = relay
         self.logger = logger
@@ -65,8 +45,14 @@ class _Cantaloupe:
         self.relay.cantaloupe_teardown(config=config, context=context)
 
     def build_workflows(self, config: Config, context: Any) -> None:
-        for workflow in context.workflows:
-            self.logger.debug("Building workflow: %s", workflow.name)
+        workflow_count = len(context.workflows)
+        for index, workflow in enumerate(context.workflows, start=1):
+            self.logger.debug(
+                "Building workflow (%s/%s): %s",
+                index,
+                workflow_count,
+                workflow.name,
+            )
             self.relay.cantaloupe_build_workflow(
                 config=config,
                 context=context,
@@ -85,19 +71,19 @@ def main(args: tuple[Any]) -> None:
     manager.hook.cantaloupe_addoption(parser=parser)
 
     opts = parser.parse_args(args)
-    config = Config(option=opts, workflow_dir=_make_path(opts.workflows))
+    config = Config(
+        option=opts,
+        workflow_dir=_make_path(opts.workflows),
+        pluginmanager=manager,
+    )
 
     logger = get_root_logger(level=config.get_log_level())
-
-    logger.info("Cantaloupe")
-    logger.info("Plugins: %s", manager.list_name_plugin())
-
     context = load_context(workflows=config.workflow_dir)
     if context is None:
         logger.error("No context file found.")
         return
 
-    cantaloupe = _Cantaloupe(manager.hook, logger)
+    cantaloupe = Cantaloupe(manager.hook, logger)
 
     # Add workflows to context
     logger.debug("Loading workflows from %s", config.workflow_dir)
