@@ -68,7 +68,7 @@ def cantaloupe_setup(config: "Config", context: "Context") -> None:
             if not step.use:
                 steps.append(step)
             else:
-                # Load the workflow referenced in "use" and merge its steps them into the current workflow.
+                # Load the workflow referenced in "use" and merge its steps into the current workflow.
                 imported_workflow = load_workflow(
                     os.path.join(config.option.workflows, step.use)
                 )

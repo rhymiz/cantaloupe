@@ -1,19 +1,18 @@
 import typing
-from argparse import ArgumentParser
-from typing import Any, Callable, TypeVar, cast
 
 import pluggy
 
 if typing.TYPE_CHECKING:
-    from .models import Step, Workflow, Config, Context
+    from argparse import ArgumentParser
 
-F = TypeVar("F", bound=Callable[..., Any])
+    from .models import Config, Context, Step, Workflow
 
-hookspec = cast(Callable[[F], F], pluggy.HookspecMarker("cantaloupe"))
+
+hookspec = pluggy.HookspecMarker("cantaloupe")
 
 
 @hookspec
-def cantaloupe_addoption(parser: ArgumentParser) -> None:
+def cantaloupe_addoption(parser: "ArgumentParser") -> None:
     """
     Called to add arguments to the argument parser.
 
@@ -53,7 +52,7 @@ def cantaloupe_teardown(config: "Config", context: "Context") -> None:
 def cantaloupe_resolve_step_variables(
     workflow: "Workflow",
     step: "Step",
-) -> "Step":
+) -> "Step":  # type: ignore
     """
     Called to resolve variables for a given step.
     """
