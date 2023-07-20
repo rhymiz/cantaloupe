@@ -1,0 +1,16 @@
+name: "Google Search"
+steps:
+  - action: goto
+    config:
+      url: "https://www.google.com/"
+  - action: type
+    config:
+      selector: "input[name='q']"
+      text: "Elmi"
+  - action: if
+    condition:
+      expression: "page.url === 'https://www.google.com/'"
+    steps:
+      - action: click
+        config:
+          selector: "input[name='btnK']"

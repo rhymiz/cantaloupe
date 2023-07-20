@@ -63,7 +63,7 @@ class Cantaloupe:
             )
 
 
-def main(args: list[Any]) -> None:
+def main(*args) -> None:
     """
     Main entry point for the Cantaloupe CLI.
     """
@@ -73,7 +73,7 @@ def main(args: list[Any]) -> None:
     # collect all the options from plugins
     manager.hook.cantaloupe_addoption(parser=parser)
 
-    opts = parser.parse_args(args)
+    opts = parser.parse_args(*args)
     config = Config(
         option=opts,
         dry_run=opts.dry_run,

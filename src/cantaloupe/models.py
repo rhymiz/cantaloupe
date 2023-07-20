@@ -41,9 +41,11 @@ class Step(BaseModel):
     """Defines an action to be taken as part of a workflow."""
 
     use: str | None = Field(default=None)
+    steps: list["Step"] = Field(default_factory=list)
     config: dict[str, Any] = Field(default_factory=dict)
     action: Action
     variables: dict[str, Any] = Field(default_factory=dict)
+    condition: dict[str, Any] = Field(default_factory=dict)
 
     # Pydantic Config
     model_config = ConfigDict(use_enum_values=True)
@@ -101,3 +103,25 @@ class Context(BaseModel):
 
     # Pydantic Config
     model_config = ConfigDict(use_enum_values=True)
+
+
+"""
+Express "IF" condition with Step
+
+
+Step(
+    action=Action.IF,
+    condition={
+        "expression": "page.url() == 'https://example.com'",
+    },
+    steps=[
+        Step(
+            action=Action.GOTO,
+            config={
+            "url": "https://example.com",
+            },
+        ),
+    ],
+)
+
+"""

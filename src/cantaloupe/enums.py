@@ -7,6 +7,12 @@ class Action(str, enum.Enum):
     currently supported by the DSL.
     """
 
+    IF = "if"
+    ELSE = "else"
+    ELSE_IF = "else_if"
+    WHILE = "while"
+    FOR = "for"
+
     GOTO = "goto"
     CODE = "code"
     TYPE = "type"

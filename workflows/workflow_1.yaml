@@ -1,13 +1,7 @@
-name: "Google Search"
+name: "Facebook Login"
 steps:
   - action: import
     use: facebook-login
     variables:
       email: "demo@elmi.com"
       password: "demo"
-  - action: type
-    config:
-      selector: "input[name='q']"
-      text: "Elmi"
-    condition:
-      if: "page.url == 'https://www.google.com/'"
