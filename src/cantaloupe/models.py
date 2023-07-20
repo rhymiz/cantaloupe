@@ -38,8 +38,7 @@ class Config(BaseModel):
 
 
 class Step(BaseModel):
-    """Defines an action to be taken as part of a workflow.
-    """
+    """Defines an action to be taken as part of a workflow."""
 
     use: str | None = Field(default=None)
     config: dict[str, Any] = Field(default_factory=dict)
