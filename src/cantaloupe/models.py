@@ -103,25 +103,3 @@ class Context(BaseModel):
 
     # Pydantic Config
     model_config = ConfigDict(use_enum_values=True)
-
-
-"""
-Express "IF" condition with Step
-
-
-Step(
-    action=Action.IF,
-    condition={
-        "expression": "page.url() == 'https://example.com'",
-    },
-    steps=[
-        Step(
-            action=Action.GOTO,
-            config={
-            "url": "https://example.com",
-            },
-        ),
-    ],
-)
-
-"""
