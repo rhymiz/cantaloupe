@@ -8,3 +8,6 @@ steps:
   - action: type
     config:
       selector: "input[name='q']"
+      text: "Elmi"
+    condition:
+      if: "page.url == 'https://www.google.com/'"

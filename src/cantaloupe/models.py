@@ -13,7 +13,7 @@ from .enums import Action, Browser, ScreenshotOpts, TraceVideoOpts
 
 class Config(BaseModel):
     """
-    This class represents a immutable configuration file.
+    This class represents an immutable configuration object.
     """
 
     option: argparse.Namespace
@@ -21,6 +21,7 @@ class Config(BaseModel):
     workflow_dir: Path
     pluginmanager: pluggy.PluginManager
 
+    # Pydantic Config
     model_config = ConfigDict(
         frozen=True,
         use_enum_values=True,
@@ -37,15 +38,16 @@ class Config(BaseModel):
 
 
 class Step(BaseModel):
-    """Defines an action to be taken as part of a workflow."""
+    """Defines an action to be taken as part of a workflow.
+    """
 
     use: str | None = Field(default=None)
     config: dict[str, Any] = Field(default_factory=dict)
     action: Action
     variables: dict[str, Any] = Field(default_factory=dict)
 
-    class ConfigDict:
-        use_enum_values = True
+    # Pydantic Config
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class WorkflowVariable(BaseModel):
@@ -54,8 +56,8 @@ class WorkflowVariable(BaseModel):
     default: Any = Field(default=None)
     required: bool = Field(default=False)
 
-    class ConfigDict:
-        use_enum_values = True
+    # Pydantic Config
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class Workflow(BaseModel):
@@ -65,9 +67,8 @@ class Workflow(BaseModel):
     file_path: Path | str
     variables: list[WorkflowVariable] = Field(default_factory=list)
 
-    model_config = ConfigDict(
-        use_enum_values=True,
-    )
+    # Pydantic Config
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class ContextAssetOpts(BaseModel):
@@ -75,9 +76,8 @@ class ContextAssetOpts(BaseModel):
     video: TraceVideoOpts = Field(default=TraceVideoOpts.ON)
     screenshot: ScreenshotOpts = Field(default=ScreenshotOpts.ON_FAILURE)
 
-    model_config = ConfigDict(
-        use_enum_values=True,
-    )
+    # Pydantic Config
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class ContextTimeoutOpts(BaseModel):
@@ -87,9 +87,8 @@ class ContextTimeoutOpts(BaseModel):
     expect_timeout: int = Field(default=15000)  # 15 seconds
     navigation_timeout: int = Field(default=15000)  # 15 seconds
 
-    model_config = ConfigDict(
-        use_enum_values=True,
-    )
+    # Pydantic Config
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class Context(BaseModel):
@@ -101,6 +100,5 @@ class Context(BaseModel):
     base_url: str = Field(default=None)
     workflows: Iterable[Workflow] = Field(default_factory=list)
 
-    model_config = ConfigDict(
-        use_enum_values=True,
-    )
+    # Pydantic Config
+    model_config = ConfigDict(use_enum_values=True)
